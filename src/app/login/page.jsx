@@ -4,13 +4,16 @@ import Image from "next/image";
 import { useState } from "react";
 import InputLogin from "@/components/login/InputLogin";
 import LoginButton from "@/components/login/LoginButton";
+import Main from "@/components/login/Main";
+import SectionLogin from "@/components/login/SectionLogin";
+import FormsLogin from "@/components/login/FormsLogin";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
-    <main className="bg-[#EFEFFF] min-h-screen flex items-center justify-center flex-col">
+    <Main>
       <Image
         src="/images/logo.png"
         alt="Logo"
@@ -18,9 +21,9 @@ function Login() {
         height={120}
         className=""
       ></Image>
-      <section className="bg-white p-5 md:p-10 items-center rounded-3xl flex flex-col gap-5 w-3/4 md:w-2/4 lg:w-1/3">
+      <SectionLogin>
         <h1 className="font-bold">Seja bem-vindo(a) de volta!</h1>
-        <form action="" className="flex flex-col gap-5 w-full">
+        <FormsLogin>
           <InputLogin
             value={email}
             label={"Email"}
@@ -37,11 +40,11 @@ function Login() {
             type="password"
           >
           </InputLogin>
-          <LoginButton></LoginButton>
+          <LoginButton>Entrar</LoginButton>
           <span className="items-center text-sm">Não tem uma conta? <span className="text-[#1B3B99]">Criar conta</span></span>
-        </form>
-      </section>
-    </main>
+        </FormsLogin>
+      </SectionLogin>
+    </Main>
   );
 }
 
