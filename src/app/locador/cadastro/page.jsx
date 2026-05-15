@@ -6,7 +6,7 @@ import SectionLogin from "@/components/login/SectionLogin";
 import FormsLogin from "@/components/login/FormsLogin";
 import InputLogin from "@/components/login/InputLogin";
 import { useState } from "react";
-import LoginButton from "@/components/login/LoginButton";
+import LoginButton from "@/components/buttons/ButtonForms";
 
 function CadastroLocador() {
   const [email, setEmail] = useState("");

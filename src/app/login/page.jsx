@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import InputLogin from "@/components/login/InputLogin";
-import LoginButton from "@/components/login/LoginButton";
+import LoginButton from "@/components/buttons/ButtonForms";
 import Main from "@/components/login/Main";
 import SectionLogin from "@/components/login/SectionLogin";
 import FormsLogin from "@/components/login/FormsLogin";
