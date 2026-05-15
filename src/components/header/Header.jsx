@@ -1,16 +1,11 @@
 import Image from "next/image";
+import Logo from "@/components/logo/Logo";
 import RedirectButton from "../buttons/RedirectButton";
 
 function Header() {
   return (
-    <header className="flex justify-between items-center p-2 shadow-md">
-      <Image
-        src="/images/logo.png"
-        alt="Logo"
-        width={120}
-        height={120}
-        className=""
-      ></Image>
+    <header className="bg-[#FFFFFF] flex justify-between items-center p-2 shadow-md">
+      <Logo></Logo>
       <RedirectButton destiny={"/login"}>Entrar</RedirectButton>
     </header>
   );
