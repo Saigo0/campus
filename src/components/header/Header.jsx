@@ -4,7 +4,7 @@ import RedirectButton from "../buttons/RedirectButton";
 
 function Header() {
   return (
-    <header className="bg-[#FFFFFF] flex justify-between items-center p-2 shadow-md">
+    <header className="bg-[#FFFFFF] flex justify-between items-center py-2 px-10 shadow-md">
       <Logo></Logo>
       <RedirectButton destiny={"/login"}>Entrar</RedirectButton>
     </header>
