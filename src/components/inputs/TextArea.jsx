@@ -1,7 +1,7 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStarOfLife } from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon, FontAwesomeIcons} from "@fortawesome/react-fontawesome";
 
-function Input({
+function TextArea({
   label,
   id,
   value,
@@ -15,10 +15,18 @@ function Input({
   return (
     <div className="flex flex-col w-full">
       <div className="flex justify-between text-sm">
-        <label htmlFor={id}>{label}{required && (<FontAwesomeIcon className="text-red-600 text-[10px]" icon={faStarOfLife}/>)}</label>
+        <label htmlFor={id}>
+          {label}
+          {required && (
+            <FontAwesomeIcon
+              className="text-red-600 text-[10px]"
+              icon={faStarOfLife}
+            />
+          )}
+        </label>
         {forgot && <span className="text-[#1B3B99]">Esqueceu a senha?</span>}
       </div>
-      <input
+      <textarea
         id={id}
         type={type}
         placeholder={placeholder}
@@ -33,4 +41,4 @@ function Input({
   );
 }
 
-export default Input;
+export default TextArea;
