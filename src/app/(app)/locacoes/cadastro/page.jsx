@@ -67,7 +67,10 @@ function CadastroLocacao() {
   const [tipoImovel, setTipoImovel] = useState();
 
   const [comodidades, setComodidades] = useState([]);
-  const [inclusos, setInclusos] = useState([]);
+  const [eletricidade, setEletricidade] = useState(false);
+  const [agua, setAgua] = useState(false);
+  const [internet, setInternet] = useState(false);
+  const [gas, setGas] = useState(false);
 
   return (
     <>
@@ -307,10 +310,10 @@ function CadastroLocacao() {
               </BoxInfo>
               <BoxInfo title={"Incluídos"}>
                 <div className="flex flex-col gap-5">
-                  <Utility icon={faBolt} title={"Eletricidade"}></Utility>
-                  <Utility icon={faDroplet} title={"Água"}></Utility>
-                  <Utility icon={faWifi} title={"Internet"}></Utility>
-                  <Utility icon={faFireFlameSimple} title={"Gás"}></Utility>
+                  <Utility icon={faBolt} title={"Eletricidade"} checked={eletricidade} onClick={() => setEletricidade(!eletricidade)}></Utility>
+                  <Utility icon={faDroplet} title={"Água"} checked={agua} onClick={() => setAgua(!agua)}></Utility>
+                  <Utility icon={faWifi} title={"Internet"} checked={internet} onClick={() => setInternet(!internet)}></Utility>
+                  <Utility icon={faFireFlameSimple} title={"Gás"} checked={gas} onClick={() => setGas(!gas)}></Utility>
                 </div>
               </BoxInfo>
             </div>
