@@ -13,7 +13,7 @@ function Input({
   rounded = false,
 }) {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
       <div className="flex justify-between text-sm">
         <label htmlFor={id}>{label}{required && (<FontAwesomeIcon className="text-red-600 text-[10px]" icon={faStarOfLife}/>)}</label>
         {forgot && <span className="text-[#1B3B99]">Esqueceu a senha?</span>}
