@@ -1,6 +1,7 @@
 import Header from "@/components/header/Header";
 import GridLocCards from "@/components/grids/GridLocCards";
 import Main from "@/components/home/Main";
+import H1 from "@/components/heading/H1";
 import {
   faHouse,
   faBuilding,
@@ -43,6 +44,7 @@ const imoveisMockados = [
         title: "Casa em Ibirama",
         pricing: "R$900,00",
         url: "",
+        approvement: "Undefined",
         icons: [faHouse, faBed, faDog]
     },
     {
@@ -53,6 +55,7 @@ const imoveisMockados = [
         title: "Casa em Ibirama",
         pricing: "R$1.100,00",
         url: "",
+        approvement: "Undefined",
         icons: [faHouse, faBed, faDog]
     },
     {
@@ -63,6 +66,7 @@ const imoveisMockados = [
         title: "Casa em Ibirama",
         pricing: "R$1.200,00",
         url: "",
+        approvement: "Undefined",
         icons: [faHouse, faBed, faDog]
     },
     {
@@ -73,6 +77,7 @@ const imoveisMockados = [
         title: "Casa em Ibirama",
         pricing: "R$800,00",
         url: "",
+        approvement: "Undefined",
         icons: [faHouse, faBed, faDog]
     },
     {
@@ -83,6 +88,7 @@ const imoveisMockados = [
         title: "Casa em Ibirama",
         pricing: "R$1.500,00",
         url: "",
+        approvement: "Undefined",
         icons: [faHouse, faBed, faDog]
     },
     {
@@ -93,6 +99,7 @@ const imoveisMockados = [
         title: "Casa em Ibirama",
         pricing: "R$850,00",
         url: "",
+        approvement: "Undefined",
         icons: [faHouse, faBed, faDog]
     }
 ]
@@ -100,11 +107,16 @@ const imoveisMockados = [
 export default function Analise(){
     return(
         <>
+        <div className="flex flex-col w-full max-w-6xl mx-auto px-4">
+            <div className="flex flex-col mb-2 ml-35">
+                <H1>Formulários para Análise</H1>
+                <p className="text-[#575881] font-semibold">Há 4 imóveis aguardando pela liberação da análise</p>
+            </div>
 
-        <Main>
-            <GridLocCards imoveisMockados={imoveisMockados}></GridLocCards>
-        </Main>
-        
+            <Main>
+                <GridLocCards imoveisMockados={imoveisMockados}></GridLocCards>
+            </Main>
+        </div>
         </>
     )
 }

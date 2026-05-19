@@ -51,6 +51,7 @@ const imoveisMockados = [
         title: "Casa em Ibirama",
         pricing: "R$900,00",
         url: "",
+        approvement: "Approved",
         icons: [faHouse, faBed, faDog]
     },
     {
@@ -61,6 +62,7 @@ const imoveisMockados = [
         title: "Casa em Ibirama",
         pricing: "R$1.100,00",
         url: "",
+        approvement: "Approved",
         icons: [faHouse, faBed, faDog]
     },
     {
@@ -71,6 +73,7 @@ const imoveisMockados = [
         title: "Casa em Ibirama",
         pricing: "R$1.200,00",
         url: "",
+        approvement: "Approved",
         icons: [faHouse, faBed, faDog]
     },
     {
@@ -81,6 +84,7 @@ const imoveisMockados = [
         title: "Casa em Ibirama",
         pricing: "R$800,00",
         url: "",
+        approvement: "Approved",
         icons: [faHouse, faBed, faDog]
     },
     {
@@ -91,6 +95,7 @@ const imoveisMockados = [
         title: "Casa em Ibirama",
         pricing: "R$1.500,00",
         url: "",
+        approvement: "Approved",
         icons: [faHouse, faBed, faDog]
     },
     {
@@ -101,6 +106,7 @@ const imoveisMockados = [
         title: "Casa em Ibirama",
         pricing: "R$850,00",
         url: "",
+        approvement: "Approved",
         icons: [faHouse, faBed, faDog]
     }
 ]

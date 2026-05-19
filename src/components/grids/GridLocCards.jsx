@@ -15,6 +15,7 @@ export default function GridLocCards({ imoveisMockados }){
                     title={imovel.title}
                     pricing={imovel.pricing}
                     url={imovel.url}
+                    approvement={imovel.approvement}
                     icons={imovel.icons}
                 />
             ))}
