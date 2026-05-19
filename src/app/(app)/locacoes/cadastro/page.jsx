@@ -95,8 +95,8 @@ function CadastroLocacao() {
           description={"Informe os dados gerais acerca da sua propriedade."}
           icon={faHouse}
         >
-          <div className="flex gap-10">
-            <div className="w-2/3">
+          <div className="flex flex-col md:flex-row gap-10">
+            <div className=" w-full md:w-2/3">
               <BoxInfo title={"Dados Gerais"} icon={faAddressBook}>
                 <Input
                   label={"TÍTULO"}
@@ -123,7 +123,7 @@ function CadastroLocacao() {
                 ></TextArea>
               </BoxInfo>
             </div>
-            <div className="w-1/3">
+            <div className=" w-full md:w-1/3">
               <BoxInfo title={"Custos da Locação"} icon={faMoneyBill}>
                 <Input
                   label={"ALUGUEL MENSAL"}
@@ -149,6 +149,7 @@ function CadastroLocacao() {
             "Informe os detalhes acerca da capacidade da sua locação."
           }
           title={"Especificações de capacidade"}
+          className="flex flex-col gap-10"
         >
           <BoxInfo title={"Endereço"} icon={faInfoCircle}>
             <DividedInput>
@@ -230,7 +231,7 @@ function CadastroLocacao() {
               ></Input>
             </DividedInput>
             <label>TIPO DO ALUGUEL DO IMÓVEL</label>
-            <DividedInput>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3">
               <Option
                 icon={faHouse}
                 onClick={() => setTipoImovel("Casa")}
@@ -259,10 +260,10 @@ function CadastroLocacao() {
               >
                 Quarto
               </Option>
-            </DividedInput>
+            </div>
             <label>TIPO DO QUARTO</label>
-            <DividedInput>
-              <Option icon={faUser} type="room">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3 w-full">
+              <Option icon={faUser}>
                 Individual
                 <input
                   type="number"
@@ -271,7 +272,7 @@ function CadastroLocacao() {
                   className="text-center"
                 />
               </Option>
-              <Option icon={faUserGroup} type="room">
+              <Option icon={faUserGroup}>
                 Duplo
                 <input
                   type="number"
@@ -280,7 +281,7 @@ function CadastroLocacao() {
                   className="text-center"
                 />
               </Option>
-              <Option icon={faUsers} type="room">
+              <Option icon={faUsers}>
                 Triplo
                 <input
                   type="number"
@@ -289,15 +290,14 @@ function CadastroLocacao() {
                   className="text-center"
                 />
               </Option>
-            </DividedInput>
+            </div>
           </BoxInfo>
         </SectionInfo>
         <SectionInfo
           description={"Informe os detalhes adicionais sobre a sua locação."}
           title={"Informações Adicionais"}
+          className={"flex flex-col md:flex-row gap-10 w-full"}
         >
-          <DividedInput>
-            <div className="flex flex-col md:flex-row gap-10 w-full">
               <BoxInfo title={"Comodidades e Instalações"} icon={faBuilding}>
                 <Grid
                   elementsList={[
@@ -398,8 +398,6 @@ function CadastroLocacao() {
                   ></Utility>
                 </div>
               </BoxInfo>
-            </div>
-          </DividedInput>
         </SectionInfo>
       </Container>
     </>

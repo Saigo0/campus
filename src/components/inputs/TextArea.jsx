@@ -33,7 +33,7 @@ function TextArea({
         value={value}
         min={0}
         onChange={(e) => onChange(e.target.value)}
-        className={`bg-[#F2EFFF] p-2 ${
+        className={`bg-[#F2EFFF] py-2 px-3 text-sm ${
           rounded ? "rounded-3xl" : "rounded-none"
         }`}
       />

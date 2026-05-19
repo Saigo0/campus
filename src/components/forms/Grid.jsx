@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Grid({ elementsList }) {
   return (
-    <div className="w-full grid grid-cols-3 gap-5">
+    <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-5">
       {elementsList.map((element, index) => (
         <div
           key={index}

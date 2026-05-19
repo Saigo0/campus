@@ -13,7 +13,7 @@ function Input({
   rounded = false,
 }) {
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full mb-3">
       <div className="flex justify-between text-sm">
         <label htmlFor={id}>{label}{required && (<FontAwesomeIcon className="text-red-600 text-[10px]" icon={faStarOfLife}/>)}</label>
         {forgot && <span className="text-[#1B3B99]">Esqueceu a senha?</span>}
@@ -25,7 +25,7 @@ function Input({
         value={value}
         min={0}
         onChange={(e) => onChange(e.target.value)}
-        className={`bg-[#F2EFFF] p-2 ${
+        className={`bg-[#F2EFFF] py-2 px-3 text-sm ${
           rounded ? "rounded-3xl" : "rounded-none"
         }`}
       />
