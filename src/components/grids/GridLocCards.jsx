@@ -5,16 +5,17 @@ const imoveisMockados = [
         id: 1,
         img: "/images/mark.jpeg",
         imgAlt: "Foto do imóvel",
-        eyebrow: "Imóvel 1",
+        description: "Imóvel 1",
         title: "Casa em Ibirama",
         pricing: "R$900,00",
         url: "",
+        svgs: [""]
     },
     {
         id: 2,
         img: "images/mark.jpeg",
         imgAlt: "Foto do imóvel",
-        eyebrow: "Imóvel 2",
+        description: "Imóvel 2",
         title: "Casa em Ibirama",
         pricing: "R$1.100,00",
         url: "",
@@ -23,7 +24,7 @@ const imoveisMockados = [
         id: 3,
         img: "images/mark.jpeg",
         imgAlt: "Foto do imóvel",
-        eyebrow: "Imóvel 3",
+        description: "Imóvel 3",
         title: "Casa em Ibirama",
         pricing: "R$1.200,00",
         url: "",
@@ -32,7 +33,7 @@ const imoveisMockados = [
         id: 4,
         img: "images/mark.jpeg",
         imgAlt: "Foto do imóvel",
-        eyebrow: "Imóvel 4",
+        description: "Imóvel 4",
         title: "Casa em Ibirama",
         pricing: "R$800,00",
         url: "",
@@ -41,7 +42,7 @@ const imoveisMockados = [
         id: 5,
         img: "images/mark.jpeg",
         imgAlt: "Foto do imóvel",
-        eyebrow: "Imóvel 5",
+        description: "Imóvel 5",
         title: "Casa em Ibirama",
         pricing: "R$1.500,00",
         url: "",
@@ -50,7 +51,7 @@ const imoveisMockados = [
         id: 6,
         img: "images/mark.jpeg",
         imgAlt: "Foto do imóvel",
-        eyebrow: "Imóvel 6",
+        description: "Imóvel 6",
         title: "Casa em Ibirama",
         pricing: "R$850,00",
         url: "",
@@ -65,7 +66,7 @@ export default function GridLocCards(){
                     key = {imovel.id}
                     img = {imovel.img}
                     imgAlt = {imovel.imgAlt}
-                    eyebrow={imovel.eyebrow}
+                    description={imovel.description}
                     title={imovel.title}
                     pricing={imovel.pricing}
                     url={imovel.url}
