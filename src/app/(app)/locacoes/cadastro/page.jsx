@@ -46,7 +46,8 @@ import Utility from "@/components/forms/Utility";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons/faInfoCircle";
 import TextArea from "@/components/inputs/TextArea";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Carrossel from "@/components/forms/Carrossel"
+import Carrossel from "@/components/forms/Carrossel";
+import Select from "@/components/forms/Select";
 
 function CadastroLocacao() {
   const [cidade, setCidade] = useState("");
@@ -85,16 +86,16 @@ function CadastroLocacao() {
     });
   }
 
-  async function handleImage(e){
+  async function handleImage(e) {
     const file = e.target.files?.[0];
-    if(!file) return;
+    if (!file) return;
 
     const formData = new FormData();
     formData.append("file", file);
 
     const res = await fetch("/api/upload", {
       method: "POST",
-      body: formData
+      body: formData,
     });
 
     const data = await res.json();
@@ -104,14 +105,20 @@ function CadastroLocacao() {
 
   const [images, setImages] = useState([]);
 
-  async function getImages(){
+  async function getImages() {
     const res = await fetch("/api/upload");
     const data = await res.json();
     console.log(data);
     setImages(data);
   }
 
-  useEffect(()=> {
+  const options = [
+    { value: "3m", label: "3 meses" },
+    { value: "6m", label: "6 meses" },
+    { value: "12m", label: "12 meses" },
+  ];
+
+  useEffect(() => {
     getImages();
   }, []);
 
@@ -132,16 +139,24 @@ function CadastroLocacao() {
           icon={faHouse}
           className="flex flex-col gap-10"
         >
-          <BoxInfo title={"Galeria Visual"} icon={faPhotoFilm} addImage onChange={handleImage}>
+          <BoxInfo
+            title={"Galeria Visual"}
+            icon={faPhotoFilm}
+            addImage
+            onChange={handleImage}
+          >
             {images.length > 0 && (
-              <img src={images[0].url} alt="" className="h-140 object-cover w-full mb-5 rounded-xl"/>
+              <img
+                src={images[0].url}
+                alt=""
+                className="h-140 object-cover w-full mb-5 rounded-xl"
+              />
             )}
-            <Carrossel images={images}>
-            </Carrossel>
+            <Carrossel images={images}></Carrossel>
           </BoxInfo>
           <div className="flex flex-col md:flex-row gap-10">
             <div className=" w-full md:w-2/3">
-              <BoxInfo title={"Dados Gerais"} icon={faAddressBook}>
+              <BoxInfo title={"Dados Gerais"} icon={faAddressBook} className={"h-full"}>
                 <Input
                   label={"TÍTULO"}
                   placeholder="Digite aqui o título do imóvel..."
@@ -168,7 +183,7 @@ function CadastroLocacao() {
               </BoxInfo>
             </div>
             <div className=" w-full md:w-1/3">
-              <BoxInfo title={"Custos da Locação"} icon={faMoneyBill}>
+              <BoxInfo title={"Custos da Locação"} icon={faMoneyBill} className={"h-full"}>
                 <Input
                   label={"ALUGUEL MENSAL"}
                   onChange={setAluguel}
@@ -177,13 +192,34 @@ function CadastroLocacao() {
                   rounded
                   id={"aluguel"}
                 ></Input>
-                <Input
-                  label={"TAXA DE CONDOMÍNIO"}
-                  onChange={setTaxaCondominio}
-                  required
-                  rounded
-                  id={"taxaCondominio"}
-                ></Input>
+                <Select
+                  options={options}
+                  value={tempoContratoMinimo}
+                  onChange={setTempoContratoMinimo}
+                ></Select>
+                <div className="flex items-center gap-2 mb-3">
+                  <label htmlFor="condominio">Possui condomínio?</label>
+                  <input
+                    type="checkbox"
+                    checked={condominio}
+                    onChange={() => setCondominio(!condominio)}
+                    id="condominio"
+                    className=""
+                  />
+                </div>
+                {condominio && (
+                  <Input
+                    label={"TAXA DE CONDOMÍNIO"}
+                    onChange={setTaxaCondominio}
+                    required
+                    rounded
+                    id={"taxaCondominio"}
+                  ></Input>
+                )}
+                <div className="flex justify-between px-3 py-2 rounded-3xl bg-[#F2EFFF]">
+                  <p className="text-sm">Total estimado</p>
+                  <p>R$</p>
+                </div>
               </BoxInfo>
             </div>
           </div>

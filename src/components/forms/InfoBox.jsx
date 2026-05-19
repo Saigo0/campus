@@ -1,9 +1,9 @@
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function BoxInfo({ children, title, icon, addImage = false, onChange = () => {}}) {
+function BoxInfo({ children, title, icon, addImage = false, onChange = () => {}, className = ""}) {
   return (
-    <div className="bg-white p-7 w-full rounded-3xl">
+    <div className={`bg-white p-7 w-full rounded-3xl ${className}`}>
       <div className="flex justify-between mb-5">
         <div className="flex flex-row gap-2 items-center">
           <FontAwesomeIcon
