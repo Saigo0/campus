@@ -72,6 +72,13 @@ function CadastroLocacao() {
   const [internet, setInternet] = useState(false);
   const [gas, setGas] = useState(false);
 
+  const [selectedItems, setSelectedItems] = useState([]);
+  function selectItem(description) {
+    setSelectedItems((prev) => {
+      return prev.includes(description) ? prev.filter((i) => i != description) : [...prev, description];
+    });
+  }
+
   return (
     <>
       <Container>
@@ -294,26 +301,101 @@ function CadastroLocacao() {
               <BoxInfo title={"Comodidades e Instalações"} icon={faBuilding}>
                 <Grid
                   elementsList={[
-                    { icon: faHouse, title: "Mobiliado"},
-                    { icon: faWarehouse, title: "Garagem" },
-                    { icon: faDog, title: "Aceita pets" },
-                    { icon: faSwimmingPool, title: "Piscina" },
-                    { icon: faGamepad, title: "Área de lazer" },
-                    { icon: faElevator, title: "Elevador" },
-                    { icon: faFireBurner, title: "Churrasqueira" },
-                    { icon: faDumbbell, title: "Academia" },
-                    { icon: faStairs, title: "Escada" },
-                    { icon: faVenus, title: "Apenas mulheres" },
-                    { icon: faMars, title: "Apenas homens" },
+                    {
+                      icon: faHouse,
+                      title: "Mobiliado",
+                      onClick: () => selectItem("Mobiliado"),
+                      selected: selectedItems.includes("Mobiliado"),
+                    },
+                    {
+                      icon: faWarehouse,
+                      title: "Garagem",
+                      onClick: () => selectItem("Garagem"),
+                      selected: selectedItems.includes("Garagem"),
+                    },
+                    {
+                      icon: faDog,
+                      title: "Aceita pets",
+                      onClick: () => selectItem("Aceita pets"),
+                      selected: selectedItems.includes("Aceita pets"),
+                    },
+                    {
+                      icon: faSwimmingPool,
+                      title: "Piscina",
+                      onClick: () => selectItem("Piscina"),
+                      selected: selectedItems.includes("Piscina"),
+                    },
+                    {
+                      icon: faGamepad,
+                      title: "Área de lazer",
+                      onClick: () => selectItem("Área de lazer"),
+                      selected: selectedItems.includes("Área de lazer"),
+                    },
+                    {
+                      icon: faElevator,
+                      title: "Elevador",
+                      onClick: () => selectItem("Elevador"),
+                      selected: selectedItems.includes("Elevador"),
+                    },
+                    {
+                      icon: faFireBurner,
+                      title: "Churrasqueira",
+                      onClick: () => selectItem("Churrasqueira"),
+                      selected: selectedItems.includes("Churrasqueira"),
+                    },
+                    {
+                      icon: faDumbbell,
+                      title: "Academia",
+                      onClick: () => selectItem("Academia"),
+                      selected: selectedItems.includes("Academia"),
+                    },
+                    {
+                      icon: faStairs,
+                      title: "Escada",
+                      onClick: () => selectItem("Escada"),
+                      selected: selectedItems.includes("Escada"),
+                    },
+                    {
+                      icon: faVenus,
+                      title: "Apenas mulheres",
+                      onClick: () => selectItem("Apenas mulheres"),
+                      selected: selectedItems.includes("Apenas mulheres"),
+                    },
+                    {
+                      icon: faMars,
+                      title: "Apenas homens",
+                      onClick: () => selectItem("Apenas homens"),
+                      selected: selectedItems.includes("Apenas homens"),
+                    },
                   ]}
                 />
               </BoxInfo>
               <BoxInfo title={"Incluídos"}>
                 <div className="flex flex-col gap-5">
-                  <Utility icon={faBolt} title={"Eletricidade"} checked={eletricidade} onClick={() => setEletricidade(!eletricidade)}></Utility>
-                  <Utility icon={faDroplet} title={"Água"} checked={agua} onClick={() => setAgua(!agua)}></Utility>
-                  <Utility icon={faWifi} title={"Internet"} checked={internet} onClick={() => setInternet(!internet)}></Utility>
-                  <Utility icon={faFireFlameSimple} title={"Gás"} checked={gas} onClick={() => setGas(!gas)}></Utility>
+                  <Utility
+                    icon={faBolt}
+                    title={"Eletricidade"}
+                    checked={eletricidade}
+                    onClick={() => setEletricidade(!eletricidade)}
+                  ></Utility>
+                  <Utility
+                    icon={faDroplet}
+                    title={"Água"}
+                    checked={agua}
+                    onClick={() => setAgua(!agua)}
+                  ></Utility>
+                  <Utility
+                    icon={faWifi}
+                    title={"Internet"}
+                    checked={internet}
+                    onClick={() => setInternet(!internet)}
+                  ></Utility>
+                  <Utility
+                    icon={faFireFlameSimple}
+                    title={"Gás"}
+                    checked={gas}
+                    onClick={() => setGas(!gas)}
+                  ></Utility>
                 </div>
               </BoxInfo>
             </div>

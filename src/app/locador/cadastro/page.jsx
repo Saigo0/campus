@@ -7,6 +7,7 @@ import FormsLogin from "@/components/login/FormsLogin";
 import InputLogin from "@/components/login/InputLogin";
 import { useState } from "react";
 import LoginButton from "@/components/buttons/ButtonForms";
+import Link from "next/link";
 
 function CadastroLocador() {
   const [email, setEmail] = useState("");
@@ -51,7 +52,7 @@ function CadastroLocador() {
           ></InputLogin>
           <LoginButton>Cadastrar-se</LoginButton>
         </FormsLogin>
-        <span className="items-center text-sm">Já tem uma conta? <span className="text-[#1B3B99]">Entrar</span></span>
+        <span className="items-center text-sm">Já tem uma conta? <Link href="/login" className="text-[#1B3B99]">Entrar</Link></span>
       </SectionLogin>
     </Main>
   );

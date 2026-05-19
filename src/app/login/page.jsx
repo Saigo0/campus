@@ -7,6 +7,7 @@ import LoginButton from "@/components/buttons/ButtonForms";
 import Main from "@/components/login/Main";
 import SectionLogin from "@/components/login/SectionLogin";
 import FormsLogin from "@/components/login/FormsLogin";
+import Link from "next/link";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -19,9 +20,9 @@ function Login() {
         alt="Logo"
         width={120}
         height={120}
-        className=""
+        className="mb-5"
       ></Image>
-      <SectionLogin>
+      <SectionLogin className="border-t-2 border-t-[#1B3B99]">
         <h1 className="font-bold">Seja bem-vindo(a) de volta!</h1>
         <FormsLogin>
           <InputLogin
@@ -41,7 +42,7 @@ function Login() {
           >
           </InputLogin>
           <LoginButton>Entrar</LoginButton>
-          <span className="items-center text-sm">Não tem uma conta? <span className="text-[#1B3B99]">Criar conta</span></span>
+          <span className="items-center text-sm">Não tem uma conta? <Link href="/locador/cadastro" className="text-[#1B3B99]">Criar conta</Link></span>
         </FormsLogin>
       </SectionLogin>
     </Main>
