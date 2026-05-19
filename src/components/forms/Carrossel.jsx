@@ -2,28 +2,41 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft, faAngleRight, faDiagramNext } from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
-function Carrossel({images = []}) {
-  let swiperInstance = null;
+function Carrossel({ images = [] }) {
   const swiperRef = useRef(null);
   return (
-    <div className="flex">
-      <button onClick={() => swiperRef.current?.slidePrev()}><FontAwesomeIcon icon={faAngleLeft}></FontAwesomeIcon></button>
-      <Swiper
-      onSwiper={(swiper) => {
-    swiperRef.current = swiper;
-  }}
-        spaceBetween={50}
-        slidesPerView={3}
-        className="w-full overflow-visible h-40"
-      >
-        {images.map((img) => (
-          <SwiperSlide><img src={img.url} alt="Imagem" className="object-cover w-full h-full"/></SwiperSlide>
-        ))}
-      </Swiper>
-      <button onClick={() => swiperRef.current?.slideNext()}><FontAwesomeIcon icon={faAngleRight}></FontAwesomeIcon></button>
-    </div>
+    <>
+      {images.length > 0 && (
+        <div className="flex">
+          <button onClick={() => swiperRef.current?.slidePrev()}>
+            <FontAwesomeIcon icon={faAngleLeft}></FontAwesomeIcon>
+          </button>
+          <Swiper
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            spaceBetween={20}
+            slidesPerView={3}
+            className="w-full overflow-visible h-40"
+          >
+            {images.map((img) => (
+              <SwiperSlide>
+                <img
+                  src={img.url}
+                  alt="Imagem"
+                  className="object-cover w-full h-full rounded-xl"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <button onClick={() => swiperRef.current?.slideNext()}>
+            <FontAwesomeIcon icon={faAngleRight}></FontAwesomeIcon>
+          </button>
+        </div>
+      )}
+    </>
   );
 }
 

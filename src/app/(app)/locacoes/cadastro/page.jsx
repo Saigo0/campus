@@ -133,8 +133,10 @@ function CadastroLocacao() {
           className="flex flex-col gap-10"
         >
           <BoxInfo title={"Galeria Visual"} icon={faPhotoFilm} addImage onChange={handleImage}>
+            {images.length > 0 && (
+              <img src={images[0].url} alt="" className="h-140 object-cover w-full mb-5 rounded-xl"/>
+            )}
             <Carrossel images={images}>
-
             </Carrossel>
           </BoxInfo>
           <div className="flex flex-col md:flex-row gap-10">
