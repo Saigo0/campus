@@ -4,7 +4,7 @@ import Container from "@/components/Container";
 import SectionInfo from "@/components/forms/SectionInfo";
 import BoxInfo from "@/components/forms/InfoBox";
 import Input from "@/components/inputs/Input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DividedInput from "@/components/inputs/DividedInput";
 import Option from "@/components/forms/Option";
 import {
@@ -38,11 +38,15 @@ import {
   faFireBurner,
   faGamepad,
   faDoorOpen,
+  faPhotoFilm,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import Grid from "@/components/forms/Grid";
 import Utility from "@/components/forms/Utility";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons/faInfoCircle";
 import TextArea from "@/components/inputs/TextArea";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Carrossel from "@/components/forms/Carrossel"
 
 function CadastroLocacao() {
   const [cidade, setCidade] = useState("");
@@ -75,9 +79,41 @@ function CadastroLocacao() {
   const [selectedItems, setSelectedItems] = useState([]);
   function selectItem(description) {
     setSelectedItems((prev) => {
-      return prev.includes(description) ? prev.filter((i) => i != description) : [...prev, description];
+      return prev.includes(description)
+        ? prev.filter((i) => i != description)
+        : [...prev, description];
     });
   }
+
+  async function handleImage(e){
+    const file = e.target.files?.[0];
+    if(!file) return;
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const res = await fetch("/api/upload", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await res.json();
+
+    getImages();
+  }
+
+  const [images, setImages] = useState([]);
+
+  async function getImages(){
+    const res = await fetch("/api/upload");
+    const data = await res.json();
+    console.log(data);
+    setImages(data);
+  }
+
+  useEffect(()=> {
+    getImages();
+  }, []);
 
   return (
     <>
@@ -94,7 +130,13 @@ function CadastroLocacao() {
           title={"Informações gerais"}
           description={"Informe os dados gerais acerca da sua propriedade."}
           icon={faHouse}
+          className="flex flex-col gap-10"
         >
+          <BoxInfo title={"Galeria Visual"} icon={faPhotoFilm} addImage onChange={handleImage}>
+            <Carrossel images={images}>
+
+            </Carrossel>
+          </BoxInfo>
           <div className="flex flex-col md:flex-row gap-10">
             <div className=" w-full md:w-2/3">
               <BoxInfo title={"Dados Gerais"} icon={faAddressBook}>
@@ -298,106 +340,106 @@ function CadastroLocacao() {
           title={"Informações Adicionais"}
           className={"flex flex-col md:flex-row gap-10 w-full"}
         >
-              <BoxInfo title={"Comodidades e Instalações"} icon={faBuilding}>
-                <Grid
-                  elementsList={[
-                    {
-                      icon: faHouse,
-                      title: "Mobiliado",
-                      onClick: () => selectItem("Mobiliado"),
-                      selected: selectedItems.includes("Mobiliado"),
-                    },
-                    {
-                      icon: faWarehouse,
-                      title: "Garagem",
-                      onClick: () => selectItem("Garagem"),
-                      selected: selectedItems.includes("Garagem"),
-                    },
-                    {
-                      icon: faDog,
-                      title: "Aceita pets",
-                      onClick: () => selectItem("Aceita pets"),
-                      selected: selectedItems.includes("Aceita pets"),
-                    },
-                    {
-                      icon: faSwimmingPool,
-                      title: "Piscina",
-                      onClick: () => selectItem("Piscina"),
-                      selected: selectedItems.includes("Piscina"),
-                    },
-                    {
-                      icon: faGamepad,
-                      title: "Área de lazer",
-                      onClick: () => selectItem("Área de lazer"),
-                      selected: selectedItems.includes("Área de lazer"),
-                    },
-                    {
-                      icon: faElevator,
-                      title: "Elevador",
-                      onClick: () => selectItem("Elevador"),
-                      selected: selectedItems.includes("Elevador"),
-                    },
-                    {
-                      icon: faFireBurner,
-                      title: "Churrasqueira",
-                      onClick: () => selectItem("Churrasqueira"),
-                      selected: selectedItems.includes("Churrasqueira"),
-                    },
-                    {
-                      icon: faDumbbell,
-                      title: "Academia",
-                      onClick: () => selectItem("Academia"),
-                      selected: selectedItems.includes("Academia"),
-                    },
-                    {
-                      icon: faStairs,
-                      title: "Escada",
-                      onClick: () => selectItem("Escada"),
-                      selected: selectedItems.includes("Escada"),
-                    },
-                    {
-                      icon: faVenus,
-                      title: "Apenas mulheres",
-                      onClick: () => selectItem("Apenas mulheres"),
-                      selected: selectedItems.includes("Apenas mulheres"),
-                    },
-                    {
-                      icon: faMars,
-                      title: "Apenas homens",
-                      onClick: () => selectItem("Apenas homens"),
-                      selected: selectedItems.includes("Apenas homens"),
-                    },
-                  ]}
-                />
-              </BoxInfo>
-              <BoxInfo title={"Incluídos"}>
-                <div className="flex flex-col gap-5">
-                  <Utility
-                    icon={faBolt}
-                    title={"Eletricidade"}
-                    checked={eletricidade}
-                    onClick={() => setEletricidade(!eletricidade)}
-                  ></Utility>
-                  <Utility
-                    icon={faDroplet}
-                    title={"Água"}
-                    checked={agua}
-                    onClick={() => setAgua(!agua)}
-                  ></Utility>
-                  <Utility
-                    icon={faWifi}
-                    title={"Internet"}
-                    checked={internet}
-                    onClick={() => setInternet(!internet)}
-                  ></Utility>
-                  <Utility
-                    icon={faFireFlameSimple}
-                    title={"Gás"}
-                    checked={gas}
-                    onClick={() => setGas(!gas)}
-                  ></Utility>
-                </div>
-              </BoxInfo>
+          <BoxInfo title={"Comodidades e Instalações"} icon={faBuilding}>
+            <Grid
+              elementsList={[
+                {
+                  icon: faHouse,
+                  title: "Mobiliado",
+                  onClick: () => selectItem("Mobiliado"),
+                  selected: selectedItems.includes("Mobiliado"),
+                },
+                {
+                  icon: faWarehouse,
+                  title: "Garagem",
+                  onClick: () => selectItem("Garagem"),
+                  selected: selectedItems.includes("Garagem"),
+                },
+                {
+                  icon: faDog,
+                  title: "Aceita pets",
+                  onClick: () => selectItem("Aceita pets"),
+                  selected: selectedItems.includes("Aceita pets"),
+                },
+                {
+                  icon: faSwimmingPool,
+                  title: "Piscina",
+                  onClick: () => selectItem("Piscina"),
+                  selected: selectedItems.includes("Piscina"),
+                },
+                {
+                  icon: faGamepad,
+                  title: "Área de lazer",
+                  onClick: () => selectItem("Área de lazer"),
+                  selected: selectedItems.includes("Área de lazer"),
+                },
+                {
+                  icon: faElevator,
+                  title: "Elevador",
+                  onClick: () => selectItem("Elevador"),
+                  selected: selectedItems.includes("Elevador"),
+                },
+                {
+                  icon: faFireBurner,
+                  title: "Churrasqueira",
+                  onClick: () => selectItem("Churrasqueira"),
+                  selected: selectedItems.includes("Churrasqueira"),
+                },
+                {
+                  icon: faDumbbell,
+                  title: "Academia",
+                  onClick: () => selectItem("Academia"),
+                  selected: selectedItems.includes("Academia"),
+                },
+                {
+                  icon: faStairs,
+                  title: "Escada",
+                  onClick: () => selectItem("Escada"),
+                  selected: selectedItems.includes("Escada"),
+                },
+                {
+                  icon: faVenus,
+                  title: "Apenas mulheres",
+                  onClick: () => selectItem("Apenas mulheres"),
+                  selected: selectedItems.includes("Apenas mulheres"),
+                },
+                {
+                  icon: faMars,
+                  title: "Apenas homens",
+                  onClick: () => selectItem("Apenas homens"),
+                  selected: selectedItems.includes("Apenas homens"),
+                },
+              ]}
+            />
+          </BoxInfo>
+          <BoxInfo title={"Incluídos"} icon={faHouse}>
+            <div className="flex flex-col gap-5">
+              <Utility
+                icon={faBolt}
+                title={"Eletricidade"}
+                checked={eletricidade}
+                onChange={() => setEletricidade(!eletricidade)}
+              ></Utility>
+              <Utility
+                icon={faDroplet}
+                title={"Água"}
+                checked={agua}
+                onChange={() => setAgua(!agua)}
+              ></Utility>
+              <Utility
+                icon={faWifi}
+                title={"Internet"}
+                checked={internet}
+                onChange={() => setInternet(!internet)}
+              ></Utility>
+              <Utility
+                icon={faFireFlameSimple}
+                title={"Gás"}
+                checked={gas}
+                onChange={() => setGas(!gas)}
+              ></Utility>
+            </div>
+          </BoxInfo>
         </SectionInfo>
       </Container>
     </>

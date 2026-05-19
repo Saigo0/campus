@@ -13,7 +13,7 @@ function TextArea({
   rounded = false,
 }) {
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full mb-3">
       <div className="flex justify-between text-sm">
         <label htmlFor={id}>
           {label}
