@@ -27,7 +27,7 @@ export default function LocCard({imovel}){
       <div className="rounded-b-3xl py-4 px-4 bg-white shadow-xl">
         <div className="flex flex-row">
           <div className="mt-1 font-bold text-gray-700">
-            <Link href={imovel.approvement === "Undefined" ? `/analise/${imovel.id}` : `/home` } className="hover:underline">
+            <Link href={imovel.approvement === "Undefined" ? `/locacoes/analise/${imovel.id}` : `/home` } className="hover:underline">
               {imovel.title}
             </Link>
           </div>
