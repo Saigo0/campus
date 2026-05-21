@@ -23,3 +23,29 @@ body {
   color: var(--foreground);
   font-family: var(--font-plus-jakarta);
 }
+
+.select__control {
+  border-radius: 24px !important;
+  border: none !important;
+  padding: 0 12px;
+  min-height: 48px !important;
+  box-shadow: none !important;
+  background-color:#F2EFFF !important;
+}
+
+.select__control:hover {
+  border-color: #1B3B99 !important;
+}
+
+.select__option--is-selected {
+  background: linear-gradient(to right, #1B3B99, #819BFF) !important;
+}
+
+.select__control--is-focused {
+  border-color: #1B3B99 !important;
+  box-shadow: 0 0 0 2px rgba(27, 59, 153, 0.2) !important;
+}
+
+.select__placeholder {
+  color: #9ca3af !important;
+}

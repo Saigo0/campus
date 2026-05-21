@@ -1,6 +1,6 @@
 function Container({children}){
     return(
-        <div className="m-5 sm:mx-10 md:mx-20 md:my-10">
+        <div className="flex flex-col w-full max-w-6xl mx-auto px-4 py-12 gap-10 justify-center">
             {children}
         </div>
     )
