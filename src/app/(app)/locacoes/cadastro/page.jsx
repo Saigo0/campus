@@ -10,21 +10,14 @@ import Option from "@/components/forms/Option";
 import {
   faHouse,
   faBuilding,
-  faRestroom,
   faBed,
   faWarehouse,
   faUser,
-  faUsersRays,
-  faHomeUser,
-  faInfo,
   faMoneyBill,
   faAddressBook,
-  faAddressCard,
   faDog,
   faSwimmingPool,
-  faParking,
   faElevator,
-  faGripLinesVertical,
   faWifi,
   faDroplet,
   faFireFlameSimple,
@@ -39,7 +32,6 @@ import {
   faGamepad,
   faDoorOpen,
   faPhotoFilm,
-  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import Grid from "@/components/forms/Grid";
 import Utility from "@/components/forms/Utility";

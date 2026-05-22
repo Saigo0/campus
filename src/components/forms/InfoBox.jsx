@@ -13,7 +13,7 @@ function BoxInfo({ children, title, icon, addImage = false, onChange = () => {},
           <h3 className="font-bold">{title}</h3>
         </div>
         {addImage && (
-          <button className="w-10 bg-linear-to-r from-[#1B3B99] to-[#819BFF] rounded-xl">
+          <button className="w-10 bg-linear-to-r from-[#1B3B99] to-[#819BFF] rounded-xl" type="button">
             <label htmlFor="image">
               <FontAwesomeIcon
                 icon={faPlus}

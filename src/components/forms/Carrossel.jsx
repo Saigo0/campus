@@ -10,7 +10,7 @@ function Carrossel({ images = [] }) {
     <>
       {images.length > 0 && (
         <div className="flex">
-          <button onClick={() => swiperRef.current?.slidePrev()}>
+          <button onClick={() => swiperRef.current?.slidePrev()} type="button">
             <FontAwesomeIcon icon={faAngleLeft}></FontAwesomeIcon>
           </button>
           <Swiper
@@ -31,7 +31,7 @@ function Carrossel({ images = [] }) {
               </SwiperSlide>
             ))}
           </Swiper>
-          <button onClick={() => swiperRef.current?.slideNext()}>
+          <button onClick={() => swiperRef.current?.slideNext()} type="button">
             <FontAwesomeIcon icon={faAngleRight}></FontAwesomeIcon>
           </button>
         </div>
