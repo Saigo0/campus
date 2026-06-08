@@ -13,7 +13,7 @@ function InputLogin({
       <div className="flex justify-between text-sm">
         <label htmlFor={id}>{label}</label>
         {forgot && (
-            <span className="text-[#1B3B99]">Esqueceu a senha?</span>
+            <span className="text-[#1B3B99] dark:text-[#819BFF]">Esqueceu a senha?</span>
         )}
       </div>
       <input
@@ -22,7 +22,7 @@ function InputLogin({
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="bg-[#F2EFFF] p-2"
+        className="bg-[#F2EFFF] p-2 dark:bg-[#0B1120]"
       />
     </div>
   );

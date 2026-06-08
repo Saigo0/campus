@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function BoxInfo({ children, title, icon, addImage = false, onChange = () => {}, className = ""}) {
   return (
-    <div className={`bg-white p-7 rounded-3xl ${className}`}>
+    <div className={`bg-white dark:bg-[#0B1120] p-7 rounded-3xl ${className}`}>
       <div className="flex justify-between mb-5">
         <div className="flex flex-row gap-2 items-center">
           <FontAwesomeIcon

@@ -9,7 +9,7 @@ function Select({options, value, onChange, instanceId, inputId}){
         value={value}
         onChange={onChange}
         placeholder={"Selecione..."}
-        className="mb-3"
+        className="mb-3 bg-[#F2EFFF] dark:bg-[#03132c] text-black dark:text-white"
         classNamePrefix="select"
         >
 

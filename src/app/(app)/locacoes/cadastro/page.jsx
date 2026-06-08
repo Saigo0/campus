@@ -310,7 +310,7 @@ function CadastroLocacao() {
                     <div className="flex items-center gap-2 mb-3">
                       <label
                         htmlFor="condominio"
-                        className="text-gray-600 text-sm"
+                        className="text-gray-600 text-sm dark:text-white"
                       >
                         Possui condomínio?
                       </label>
@@ -332,7 +332,7 @@ function CadastroLocacao() {
                         id={"taxaCondominio"}
                       ></Input>
                     )}
-                    <div className="flex justify-between p-3 rounded-3xl bg-[#F2EFFF]">
+                    <div className="flex justify-between p-3 rounded-3xl dark:bg-[#03132c] bg-[#F2EFFF]">
                       <p className="text-sm">Total estimado</p>
                       <p>R$</p>
                     </div>

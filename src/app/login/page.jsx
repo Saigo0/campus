@@ -22,7 +22,7 @@ function Login() {
         height={120}
         className="mb-5"
       ></Image>
-      <SectionLogin className="border-t-2 border-t-[#1B3B99]">
+      <SectionLogin className="border-t-2 border-t-[#1B3B99] bg-white">
         <h1 className="font-bold">Seja bem-vindo(a) de volta!</h1>
         <FormsLogin>
           <InputLogin
@@ -42,7 +42,7 @@ function Login() {
           >
           </InputLogin>
           <LoginButton>Entrar</LoginButton>
-          <span className="items-center text-sm">Não tem uma conta? <Link href="/locador/cadastro" className="text-[#1B3B99]">Criar conta</Link></span>
+          <span className="items-center text-sm">Não tem uma conta? <Link href="/locador/cadastro" className="text-[#1B3B99] dark:text-[#819BFF] ">Criar conta</Link></span>
         </FormsLogin>
       </SectionLogin>
     </Main>

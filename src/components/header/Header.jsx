@@ -1,14 +1,21 @@
-import Image from "next/image";
+"use client"
+
 import Logo from "@/components/logo/Logo";
 import RedirectButton from "../buttons/RedirectButton";
+import Theme from "@/components/Theme";
+import { useState } from "react";
 
 function Header() {
   return (
-    <header className="bg-[#FFFFFF] flex justify-between items-center relative z-10 py-2 px-10 shadow-lg">
+    <header className="bg-[#FFFFFF] dark:bg-[#0B1120]  flex justify-between items-center relative z-10 py-2 px-10 shadow-lg">
       <Logo></Logo>
-      <RedirectButton destiny={"/login"}>Entrar</RedirectButton>
+      <div className="flex gap-5">
+        <Theme></Theme>
+        <RedirectButton destiny={"/login"}>Entrar</RedirectButton>
+      </div>
     </header>
   );
 }
 
 export default Header;
+
