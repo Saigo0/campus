@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function LocCard({imovel}){
     return(
 
-      <Link href={imovel.approvement === "Undefined" ? `/locacoes/analise/${imovel.id}` : `/locacoes/${imovel.id}`} className="hover:underline">
+      <Link href={imovel.approvement === "Undefined" ? `/locacoes/analise/${imovel.id}` : `/locacoes/${imovel.id}`} className="">
         <div className="rounded-3xl overflow-hidden shadow-xl bg-white hover:scale-101 transition">
           <div className="relative">
           <img className="rounded-t-3xl w-[400px] h-[200px] object-cover" src={imovel.img} alt={imovel.imgAlt} />

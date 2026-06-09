@@ -39,6 +39,7 @@ import {
 export const imoveisMockadosAprovados = [
     {
         id: 1,
+        idLocador: 1,
         img: "/images/mark.jpeg",
         imgAlt: "Foto do imóvel",
         description: "Casa com boa localização em Ibirama. Situada a 1,2km da UDESC - CEAVI, essa residência conta com 2 quartos e 1 banheiro, além de ser permissiva em relação aos pets. Ótima opção para quem busca proximidade com a universidade e conforto para o dia a dia.",
@@ -56,10 +57,14 @@ export const imoveisMockadosAprovados = [
         url: "",
         approvement: "Approved",
         homeIcons: [faHouse, faBed, faDog, faBath, faBorderAll],
-        icons: [faHouse, faBed, faDog, faBath, faBorderAll, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faSquareParking, faPuzzlePiece,]
+        capacityIcons: [faBed, faBath, faBorderAll],
+        specsIcons: [faWifi, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faPuzzlePiece, faSquareParking],
+        capacityValues: ["2", "1", "40m²"],
+        specsValues: ["Internet inclusa", "Apenas mulheres", "Luz inclusa", "Água inclusa", "Elevador", "Escada", "Área de lazer", "Garagem"],
     },
     {
         id: 2,
+        idLocador: 1,
         img: "/images/mark.jpeg",
         imgAlt: "Foto do imóvel",
         description: "Casa com boa localização em Ibirama. Situada a 1,2km da UDESC - CEAVI, essa residência conta com 2 quartos e 1 banheiro, além de ser permissiva em relação aos pets. Ótima opção para quem busca proximidade com a universidade e conforto para o dia a dia.",
@@ -77,10 +82,14 @@ export const imoveisMockadosAprovados = [
         url: "",
         approvement: "Approved",
         homeIcons: [faHouse, faBed, faDog, faBath, faBorderAll],
-        icons: [faHouse, faBed, faDog, faBath, faBorderAll, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faSquareParking, faPuzzlePiece,]
+        capacityIcons: [faBed, faBath, faBorderAll],
+        specsIcons: [faWifi, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faPuzzlePiece, faSquareParking],
+        capacityValues: ["2", "1", "40m²"],
+        specsValues: ["Internet inclusa", "Apenas mulheres", "Luz inclusa", "Água inclusa", "Elevador", "Escada", "Área de lazer", "Garagem"],
     },
     {
         id: 3,
+        idLocador: 1,
         img: "/images/mark.jpeg",
         imgAlt: "Foto do imóvel",
         description: "Casa com boa localização em Ibirama. Situada a 1,2km da UDESC - CEAVI, essa residência conta com 2 quartos e 1 banheiro, além de ser permissiva em relação aos pets. Ótima opção para quem busca proximidade com a universidade e conforto para o dia a dia.",
@@ -98,10 +107,14 @@ export const imoveisMockadosAprovados = [
         url: "",
         approvement: "Approved",
         homeIcons: [faHouse, faBed, faDog, faBath, faBorderAll],
-        icons: [faHouse, faBed, faDog, faBath, faBorderAll, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faSquareParking, faPuzzlePiece,]
+        capacityIcons: [faBed, faBath, faBorderAll],
+        specsIcons: [faWifi, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faPuzzlePiece, faSquareParking],
+        capacityValues: ["2", "1", "40m²"],
+        specsValues: ["Internet inclusa", "Apenas mulheres", "Luz inclusa", "Água inclusa", "Elevador", "Escada", "Área de lazer", "Garagem"],
     },
     {
         id: 4,
+        idLocador: 1,
         img: "/images/mark.jpeg",
         imgAlt: "Foto do imóvel",
         description: "Casa com boa localização em Ibirama. Situada a 1,2km da UDESC - CEAVI, essa residência conta com 2 quartos e 1 banheiro, além de ser permissiva em relação aos pets. Ótima opção para quem busca proximidade com a universidade e conforto para o dia a dia.",
@@ -119,10 +132,14 @@ export const imoveisMockadosAprovados = [
         url: "",
         approvement: "Approved",
         homeIcons: [faHouse, faBed, faDog, faBath, faBorderAll],
-        icons: [faHouse, faBed, faDog, faBath, faBorderAll, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faSquareParking, faPuzzlePiece, faWifi]
+        capacityIcons: [faBed, faBath, faBorderAll],
+        specsIcons: [faWifi, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faPuzzlePiece, faSquareParking],
+        capacityValues: ["2", "1", "40m²"],
+        specsValues: ["Internet inclusa", "Apenas mulheres", "Luz inclusa", "Água inclusa", "Elevador", "Escada", "Área de lazer", "Garagem"],
     },
     {
         id: 5,
+        idLocador: 1,
         img: "/images/mark.jpeg",
         imgAlt: "Foto do imóvel",
         description: "Casa com boa localização em Ibirama. Situada a 1,2km da UDESC - CEAVI, essa residência conta com 2 quartos e 1 banheiro, além de ser permissiva em relação aos pets. Ótima opção para quem busca proximidade com a universidade e conforto para o dia a dia.",
@@ -140,10 +157,14 @@ export const imoveisMockadosAprovados = [
         url: "",
         approvement: "Approved",
         homeIcons: [faHouse, faBed, faDog, faBath, faBorderAll],
-        icons: [faHouse, faBed, faDog, faBath, faBorderAll, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faSquareParking, faPuzzlePiece, faWifi]
+        capacityIcons: [faBed, faBath, faBorderAll],
+        specsIcons: [faWifi, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faPuzzlePiece, faSquareParking],
+        capacityValues: ["2", "1", "40m²"],
+        specsValues: ["Internet inclusa", "Apenas mulheres", "Luz inclusa", "Água inclusa", "Elevador", "Escada", "Área de lazer", "Garagem"],
     },
     {
         id: 6,
+        idLocador: 1,
         img: "/images/mark.jpeg",
         imgAlt: "Foto do imóvel",
         description: "Casa com boa localização em Ibirama. Situada a 1,2km da UDESC - CEAVI, essa residência conta com 2 quartos e 1 banheiro, além de ser permissiva em relação aos pets. Ótima opção para quem busca proximidade com a universidade e conforto para o dia a dia.",
@@ -161,13 +182,17 @@ export const imoveisMockadosAprovados = [
         url: "",
         approvement: "Approved",
         homeIcons: [faHouse, faBed, faDog, faBath, faBorderAll],
-        icons: [faHouse, faBed, faDog, faBath, faBorderAll, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faSquareParking, faPuzzlePiece, faWifi]
+        capacityIcons: [faBed, faBath, faBorderAll],
+        specsIcons: [faWifi, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faPuzzlePiece, faSquareParking],
+        capacityValues: ["2", "1", "40m²"],
+        specsValues: ["Internet inclusa", "Apenas mulheres", "Luz inclusa", "Água inclusa", "Elevador", "Escada", "Área de lazer", "Garagem"],
     }
 ];
 
 export const imoveisMockadosIndefinidos = [
     {
         id: 1,
+        idLocador: 1,
         img: "/images/mark.jpeg",
         imgAlt: "Foto do imóvel",
         description: "Casa com boa localização em Ibirama. Situada a 1,2km da UDESC - CEAVI, essa residência conta com 2 quartos e 1 banheiro, além de ser permissiva em relação aos pets. Ótima opção para quem busca proximidade com a universidade e conforto para o dia a dia.",
@@ -185,10 +210,14 @@ export const imoveisMockadosIndefinidos = [
         url: "",
         approvement: "Undefined",
         homeIcons: [faHouse, faBed, faDog, faBath, faBorderAll],
-        icons: [faHouse, faBed, faDog, faBath, faBorderAll, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faSquareParking, faPuzzlePiece, faWifi]
+        capacityIcons: [faBed, faBath, faBorderAll],
+        specsIcons: [faWifi, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faPuzzlePiece, faSquareParking],
+        capacityValues: ["2", "1", "40m²"],
+        specsValues: ["Internet inclusa", "Apenas mulheres", "Luz inclusa", "Água inclusa", "Elevador", "Escada", "Área de lazer", "Garagem"],
     },
     {
         id: 2,
+        idLocador: 1,
         img: "/images/mark.jpeg",
         imgAlt: "Foto do imóvel",
         description: "Casa com boa localização em Ibirama. Situada a 1,2km da UDESC - CEAVI, essa residência conta com 2 quartos e 1 banheiro, além de ser permissiva em relação aos pets. Ótima opção para quem busca proximidade com a universidade e conforto para o dia a dia.",
@@ -206,10 +235,14 @@ export const imoveisMockadosIndefinidos = [
         url: "",
         approvement: "Undefined",
         homeIcons: [faHouse, faBed, faDog, faBath, faBorderAll],
-        icons: [faHouse, faBed, faDog, faBath, faBorderAll, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faSquareParking, faPuzzlePiece, faWifi]
+        capacityIcons: [faBed, faBath, faBorderAll],
+        specsIcons: [faWifi, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faPuzzlePiece, faSquareParking],
+        capacityValues: ["2", "1", "40m²"],
+        specsValues: ["Internet inclusa", "Apenas mulheres", "Luz inclusa", "Água inclusa", "Elevador", "Escada", "Área de lazer", "Garagem"],
     },
     {
         id: 3,
+        idLocador: 1,
         img: "/images/mark.jpeg",
         imgAlt: "Foto do imóvel",
         description: "Casa com boa localização em Ibirama. Situada a 1,2km da UDESC - CEAVI, essa residência conta com 2 quartos e 1 banheiro, além de ser permissiva em relação aos pets. Ótima opção para quem busca proximidade com a universidade e conforto para o dia a dia.",
@@ -227,10 +260,14 @@ export const imoveisMockadosIndefinidos = [
         url: "",
         approvement: "Undefined",
         homeIcons: [faHouse, faBed, faDog, faBath, faBorderAll],
-        icons: [faHouse, faBed, faDog, faBath, faBorderAll, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faSquareParking, faPuzzlePiece, faWifi]
+        capacityIcons: [faBed, faBath, faBorderAll],
+        specsIcons: [faWifi, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faPuzzlePiece, faSquareParking],
+        capacityValues: ["2", "1", "40m²"],
+        specsValues: ["Internet inclusa", "Apenas mulheres", "Luz inclusa", "Água inclusa", "Elevador", "Escada", "Área de lazer", "Garagem"],
     },
     {
         id: 4,
+        idLocador: 1,
         img: "/images/mark.jpeg",
         imgAlt: "Foto do imóvel",
         description: "Casa com boa localização em Ibirama. Situada a 1,2km da UDESC - CEAVI, essa residência conta com 2 quartos e 1 banheiro, além de ser permissiva em relação aos pets. Ótima opção para quem busca proximidade com a universidade e conforto para o dia a dia.",
@@ -248,10 +285,14 @@ export const imoveisMockadosIndefinidos = [
         url: "",
         approvement: "Undefined",
         homeIcons: [faHouse, faBed, faDog, faBath, faBorderAll],
-        icons: [faHouse, faBed, faDog, faBath, faBorderAll, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faSquareParking, faPuzzlePiece, faWifi]
+        capacityIcons: [faBed, faBath, faBorderAll],
+        specsIcons: [faWifi, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faPuzzlePiece, faSquareParking],
+        capacityValues: ["2", "1", "40m²"],
+        specsValues: ["Internet inclusa", "Apenas mulheres", "Luz inclusa", "Água inclusa", "Elevador", "Escada", "Área de lazer", "Garagem"],
     },
     {
         id: 5,
+        idLocador: 1,
         img: "/images/mark.jpeg",
         imgAlt: "Foto do imóvel",
         description: "Casa com boa localização em Ibirama. Situada a 1,2km da UDESC - CEAVI, essa residência conta com 2 quartos e 1 banheiro, além de ser permissiva em relação aos pets. Ótima opção para quem busca proximidade com a universidade e conforto para o dia a dia.",
@@ -269,10 +310,14 @@ export const imoveisMockadosIndefinidos = [
         url: "",
         approvement: "Undefined",
         homeIcons: [faHouse, faBed, faDog, faBath, faBorderAll],
-        icons: [faHouse, faBed, faDog, faBath, faBorderAll, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faSquareParking, faPuzzlePiece, faWifi]
+        capacityIcons: [faBed, faBath, faBorderAll],
+        specsIcons: [faWifi, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faPuzzlePiece, faSquareParking],
+        capacityValues: ["2", "1", "40m²"],
+        specsValues: ["Internet inclusa", "Apenas mulheres", "Luz inclusa", "Água inclusa", "Elevador", "Escada", "Área de lazer", "Garagem"],
     },
     {
         id: 6,
+        idLocador: 1,
         img: "/images/mark.jpeg",
         imgAlt: "Foto do imóvel",
         description: "Casa com boa localização em Ibirama. Situada a 1,2km da UDESC - CEAVI, essa residência conta com 2 quartos e 1 banheiro, além de ser permissiva em relação aos pets. Ótima opção para quem busca proximidade com a universidade e conforto para o dia a dia.",
@@ -290,11 +335,14 @@ export const imoveisMockadosIndefinidos = [
         url: "",
         approvement: "Undefined",
         homeIcons: [faHouse, faBed, faDog, faBath, faBorderAll],
-        icons: [faHouse, faBed, faDog, faBath, faBorderAll, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faSquareParking, faPuzzlePiece, faWifi]
+        capacityIcons: [faBed, faBath, faBorderAll],
+        specsIcons: [faWifi, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faPuzzlePiece, faSquareParking],
+        capacityValues: ["2", "1", "40m²"],
+        specsValues: ["Internet inclusa", "Apenas mulheres", "Luz inclusa", "Água inclusa", "Elevador", "Escada", "Área de lazer", "Garagem"],
     }
 ];
 
-export const locadorMockado = [
+export const locadoresMockados = [
     {
         id: 1,
         nome: "João Silva",

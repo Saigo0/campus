@@ -1,12 +1,9 @@
-import LocCard from "./LocCard"
+import LocCard from "./LocCard";
 
-
-
-
-export default function GridLocCards({ imoveisMockados }){
+export default function GridLocCards({ imoveis }){
     return(
         <div className= "grid grid-cols-2 sm:grid-cols-2 py-12 gap-10">
-            {imoveisMockados.map((imovel) => (
+            {imoveis.map((imovel) => (
                 <LocCard
                     key={imovel.id}
                     imovel={imovel}
