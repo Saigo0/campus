@@ -47,7 +47,7 @@ export default function Analise(){
             </div>
 
             <Main>
-                <GridLocCards imoveisMockados={imoveisMockadosIndefinidos}></GridLocCards>
+                <GridLocCards imoveis={imoveisMockadosIndefinidos}></GridLocCards>
             </Main>
         </div>
         </>
