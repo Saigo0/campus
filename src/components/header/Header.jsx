@@ -6,7 +6,7 @@ import Theme from "@/components/theme/Theme";
 
 function Header() {
   return (
-    <header className="bg-[#FFFFFF] dark:bg-[#03132c]  flex justify-between items-center relative z-10 py-2 px-10 shadow-lg">
+    <header className="bg-[#FFFFFF] dark:bg-[#03132c]  flex justify-between items-center relative z-10 py-2 px-20 shadow-lg">
       <Logo></Logo>
       <div className="flex gap-5">
         <Theme></Theme>
