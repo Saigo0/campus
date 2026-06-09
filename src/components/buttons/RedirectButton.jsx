@@ -8,7 +8,7 @@ const inter = Inter({
 
 function RedirectButton({children, destiny}){
     return(
-        <Link href={destiny} className={`bg-linear-to-r from-[#1B3B99] to-[#819BFF] text-white py-2 px-6 font-semibold rounded-2xl text-sm ${inter.className}`}>{children}</Link>
+        <Link href={destiny} className={`bg-linear-to-r from-[#1B3B99] to-[#819BFF] dark:from-[#b6c4ff] dark:to-[#819BFF] dark:text-black text-white py-2 px-6 font-semibold rounded-2xl text-sm ${inter.className}`}>{children}</Link>
     )
 }
 

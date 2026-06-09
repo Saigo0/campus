@@ -14,7 +14,7 @@ export default function Theme() {
   return (
     <button
       onClick={() => setDark(!dark)}
-      className="relative flex h-10 w-20 items-center rounded-full bg-gradient-to-r from-[#1B3B99] to-[#819BFF] transition-all duration-500"
+      className="relative flex h-10 w-20 items-center rounded-full bg-gradient-to-r from-[#1B3B99] to-[#819BFF] dark:from-[#b6c4ff] dark:to-[#819BFF] transition-all duration-500"
     >
       <div
         className={`absolute flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-md transition-all duration-500 ${

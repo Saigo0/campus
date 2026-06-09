@@ -183,7 +183,7 @@ function CadastroLocacao() {
         <nav className="text-gray-600 w-3/4 mx-auto">
           <ol className="flex flex-row justify-between">
             <li
-              className={`p-2 ${step == 1 ? "bg-linear-to-r from-[#1B3B99] to-[#819BFF] rounded-3xl text-white" : ""}`}
+              className={`p-2 ${step == 1 ? "bg-linear-to-r from-[#1B3B99] to-[#819BFF] dark:from-[#b6c4ff] dark:text-black dark:to-[#819BFF] rounded-3xl text-white" : ""}`}
             >
               <button
                 type="button"
@@ -195,7 +195,7 @@ function CadastroLocacao() {
               </button>
             </li>
             <li
-              className={`p-2 ${step == 2 ? "bg-linear-to-r from-[#1B3B99] to-[#819BFF] rounded-3xl text-white" : ""}`}
+              className={`p-2 ${step == 2 ? "bg-linear-to-r from-[#1B3B99] to-[#819BFF] dark:from-[#b6c4ff] dark:text-black dark:to-[#819BFF] rounded-3xl text-white" : ""}`}
             >
               <button
                 type="button"
@@ -207,7 +207,7 @@ function CadastroLocacao() {
               </button>
             </li>
             <li
-              className={`p-2 ${step == 3 ? "bg-linear-to-r from-[#1B3B99] to-[#819BFF] rounded-3xl text-white" : ""}`}
+              className={`p-2 ${step == 3 ? "bg-linear-to-r from-[#1B3B99] to-[#819BFF] dark:from-[#b6c4ff] dark:text-black dark:to-[#819BFF] rounded-3xl text-white" : ""}`}
             >
               <button
                 type="button"

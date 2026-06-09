@@ -3,21 +3,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function BoxInfo({ children, title, icon, addImage = false, onChange = () => {}, className = ""}) {
   return (
-    <div className={`bg-white dark:bg-[#0B1120] p-7 rounded-3xl ${className}`}>
+    <div className={`bg-white dark:bg-[#1f1f25] p-7 rounded-3xl ${className}`}>
       <div className="flex justify-between mb-5">
         <div className="flex flex-row gap-2 items-center">
           <FontAwesomeIcon
             icon={icon}
-            className="text-[#1B3B99]"
+            className="text-[#1B3B99] dark:text-[#b6c4ff]"
           ></FontAwesomeIcon>
           <h3 className="font-bold">{title}</h3>
         </div>
         {addImage && (
-          <button className="w-10 bg-linear-to-r from-[#1B3B99] to-[#819BFF] rounded-xl" type="button">
+          <button className="w-10 bg-linear-to-r from-[#1B3B99] to-[#819BFF] dark:from-[#b6c4ff] dark:to-[#819BFF] rounded-xl" type="button">
             <label htmlFor="image">
               <FontAwesomeIcon
                 icon={faPlus}
-                className="text-white"
+                className="text-white dark:text-black"
               ></FontAwesomeIcon>
             </label>
             <input
