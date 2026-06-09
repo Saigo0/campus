@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import InputLogin from "@/components/login/InputLogin";
 import LoginButton from "@/components/buttons/ButtonForms";
@@ -8,6 +7,7 @@ import Main from "@/components/login/Main";
 import SectionLogin from "@/components/login/SectionLogin";
 import FormsLogin from "@/components/login/FormsLogin";
 import Link from "next/link";
+import Logo from "@/components/logo/Logo";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -15,13 +15,7 @@ function Login() {
 
   return (
     <Main>
-      <Image
-        src="/images/logo.png"
-        alt="Logo"
-        width={120}
-        height={120}
-        className="mb-5"
-      ></Image>
+      <Logo></Logo>
       <SectionLogin className="border-t-2 border-t-[#1B3B99] bg-white">
         <h1 className="font-bold">Seja bem-vindo(a) de volta!</h1>
         <FormsLogin>

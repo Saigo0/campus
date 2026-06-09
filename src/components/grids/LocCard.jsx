@@ -26,20 +26,20 @@ export default function LocCard({imovel}){
             )}
           </div>
 
-          <div className="rounded-b-3xl py-4 px-4 bg-white shadow-xl">
+          <div className="rounded-b-3xl py-4 px-4 dark:bg-[#1f1f25] bg-white shadow-xl">
             <div className="flex flex-row">
-              <div className="mt-1 font-bold text-gray-700">
+              <div className="mt-1 font-bold text-gray-700 dark:text-white">
                 {imovel.title}
               </div>
-              <div className="text-md font-extrabold text-blue-500 py-1 ml-auto">{imovel.pricing}</div>
+              <div className="text-md font-extrabold text-blue-500 dark:text-[#819BFF] py-1 ml-auto">{imovel.pricing}</div>
             </div>
 
-            <div className="mt-2 text-md text-gray-600">{imovel.address}</div>
+            <div className="mt-2 text-md text-gray-600 dark:text-white">{imovel.address}</div>
             <div className="flex flex-row mt-4 mb-2">
               {imovel.homeIcons?.map((icon, index) => (
-                <div key={index} className="flex items-center mr-2 border border-black py-1 px-2 rounded-xl">
-                  <FontAwesomeIcon icon={icon} className="text-black mr-1 w-[16px] h-[16px]"/>
-                  <span className="text-xs text-black">
+                <div key={index} className="flex items-center mr-2 border border-black dark:border-white py-1 px-2 rounded-xl">
+                  <FontAwesomeIcon icon={icon} className="text-black dark:text-white mr-1 w-[16px] h-[16px]"/>
+                  <span className="text-xs text-black dark:text-white">
                     {icon === faHouse ? "Casa" : icon === faBed ? "2" : icon === faDog ? "Pets" : icon === faBath ? "2" : icon === faBorderAll ? "40m²" : ""}
                   </span>
                 </div>

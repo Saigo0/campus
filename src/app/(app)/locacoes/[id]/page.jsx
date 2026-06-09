@@ -82,116 +82,116 @@ export default function Locacao() {
                     <div className="flex flex-row gap-8 w-[1050px]">
                         <section className="flex flex-col">
                             <H1>{imovel.title}</H1>
-                            <p className="text-[#545F71]">{imovel.description}</p>
+                            <p className="text-[#545F71] dark:text-white">{imovel.description}</p>
                         </section>
-                        <div className="bg-white p-7 rounded-3xl mt-8 w-full flex flex-col gap-5">
+                        <div className="bg-white dark:bg-[#1f1f25] p-7 rounded-3xl mt-8 w-full flex flex-col gap-5">
                             <div className="flex flex-row gap-5">
                                 <div>
-                                    <span className="text-2xl font-extrabold text-[#2A2B51]">{imovel.pricing}</span><span className="text-[#575881]">/mês</span>
+                                    <span className="text-2xl font-extrabold text-[#2A2B51] dark:text-white">{imovel.pricing}</span><span className="text-[#575881] dark:text-white">/mês</span>
                                 </div>
                                 <div className="bg-[#BBC7EB] rounded-2xl items-center px-2 mt-1">
                                     <span className="text-[#1B3B99] font-semibold text-xs">{imovel.tipoQuarto}</span>
                                 </div>
                             </div>
                             <div className="flex flex-row">
-                                <span className="text-[#575881]">Taxa de condomínio</span><span className="text-[#2A2B51] ml-20 font-bold">{imovel.taxaCondominio}</span>
+                                <span className="text-[#575881] dark:text-white">Taxa de condomínio</span><span className="text-[#2A2B51] dark:text-white ml-20 font-bold">{imovel.taxaCondominio}</span>
                             </div>
                             <div><button className="bg-[#F8F5FF] h-[1px] w-full"></button></div>
-                            <div className="bg-[#F2EFFF] p-4 rounded-4xl flex flex-row gap-4">
+                            <div className="bg-[#F2EFFF] dark:bg-[#2e2e44] p-4 rounded-4xl flex flex-row gap-4">
                                 <div className="rounded-full overflow-hidden w-[50px] h-[50px] shrink-0">
                                     <Image className="object-cover w-full h-full" src={locadorMockado[0].foto} alt={locadorMockado[0].nome} width={50} height={50}/>
                                 </div> 
                                 <div className="flex flex-col">
-                                    <span className="text-[#2A2B51] font-semibold">{locadorMockado[0].nome}</span>
-                                    <span className="text-[#575881] text-sm">{imovel.city}</span>
+                                    <span className="text-[#2A2B51] dark:text-white font-semibold">{locadorMockado[0].nome}</span>
+                                    <span className="text-[#575881] dark:text-white text-sm">{imovel.city}</span>
                                 </div>
                             </div>
-                            <button className="bg-linear-to-b from-[#1B3B99] to-[#819BFF] text-white py-3 px-16 font-medium rounded-3xl text-sm">Contato</button>
+                            <button className="bg-linear-to-b from-[#1B3B99] dark:from-[#b6c4ff] dark:text-black to-[#819BFF] text-white py-3 px-16 font-medium rounded-3xl text-sm">Contato</button>
                         </div>
                     </div>    
                     <section className="flex flex-col gap-4 w-[1050px] mt-8">
-                        <h2 className="text-[#545F71] font-extrabold text-2xl">Endereço</h2>
+                        <h2 className="text-[#545F71] font-extrabold text-2xl dark:text-white">Endereço</h2>
                         <div className="flex flex-row gap-8 w-[800px]">
-                            <div className="bg-white p-7 rounded-3xl w-full flex flex-col gap-5">
+                            <div className="bg-white dark:bg-[#1f1f25] p-7 rounded-3xl w-full flex flex-col gap-5">
                                 <div className="flex flex-col">
-                                    <span className="text-[#9D9DB5] text-xs font-bold">RUA</span>
-                                    <span className="text-[#2A2B51] font-bold text-lg">{imovel.rua}</span>
+                                    <span className="text-[#9D9DB5] dark:text-white text-xs font-bold">RUA</span>
+                                    <span className="text-[#2A2B51] dark:text-white font-bold text-lg">{imovel.rua}</span>
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="text-[#9D9DB5] text-xs font-bold">BAIRRO</span>
-                                    <span className="text-[#2A2B51] font-bold text-lg">{imovel.bairro}</span>
+                                    <span className="text-[#9D9DB5] dark:text-white text-xs font-bold">BAIRRO</span>
+                                    <span className="text-[#2A2B51] dark:text-white font-bold text-lg">{imovel.bairro}</span>
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="text-[#9D9DB5] text-xs font-bold">NÚMERO</span>
-                                    <span className="text-[#2A2B51] font-bold text-lg">{imovel.numero}</span>
+                                    <span className="text-[#9D9DB5] dark:text-white text-xs font-bold">NÚMERO</span>
+                                    <span className="text-[#2A2B51] dark:text-white font-bold text-lg">{imovel.numero}</span>
                                 </div>
                             </div>
-                            <div className="bg-[#E1DFFF] p-7  rounded-3xl w-full flex flex-col gap-5">
+                            <div className="bg-[#E1DFFF] dark:bg-[#2e2e44] p-7  rounded-3xl w-full flex flex-col gap-5">
                                 <div className="flex flex-col">
-                                    <span className="text-[#9D9DB5] text-xs font-bold">CIDADE</span>
-                                    <span className="text-[#2A2B51] font-bold text-lg">{imovel.city}</span>
+                                    <span className="text-[#9D9DB5] dark:text-white text-xs font-bold">CIDADE</span>
+                                    <span className="text-[#2A2B51] dark:text-white font-bold text-lg">{imovel.city}</span>
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="text-[#9D9DB5] text-xs font-bold">CEP</span>
-                                    <span className="text-[#2A2B51] font-bold text-lg">{imovel.cep}</span> 
+                                    <span className="text-[#9D9DB5] dark:text-white text-xs font-bold">CEP</span>
+                                    <span className="text-[#2A2B51] dark:text-white font-bold text-lg">{imovel.cep}</span> 
                                 </div>
-                                <div className="text-[#004AE5] font-bold text-md mt-3">
+                                <div className="text-[#004AE5] font-bold text-md mt-3 dark:text-[#819BFF]">
                                     <span> <FontAwesomeIcon icon={faLocationDot} className="mr-1 w-[16px] h-[16px]"/>{imovel.distance} do portão do campus</span>
                                 </div>
                             </div>
                         </div>
                     </section>
                     <section className="flex flex-col gap-4 w-[1050px] mt-8">
-                        <h2 className="text-[#545F71] font-bold text-2xl">Capacidade do imóvel</h2>
+                        <h2 className="text-[#545F71] font-bold text-2xl dark:text-white">Capacidade do imóvel</h2>
                         <div className="grid grid-cols-3 gap-7 w-[800px]">
-                            <div className="bg-white flex flex-col rounded-3xl items-center py-6 px-28 gap-3 shadow-sm">
-                                <FontAwesomeIcon icon={imovel.icons[1]} className="mr-1 w-[16px] h-[16px] text-[#004AE5]"/>
-                                <span className="text-[#2A2B51]">2</span>
+                            <div className="bg-white dark:bg-[#1f1f25] flex flex-col rounded-3xl items-center py-6 px-28 gap-3 shadow-sm">
+                                <FontAwesomeIcon icon={imovel.icons[1]} className="mr-1 w-[16px] h-[16px] dark:text-[#819BFF] text-[#004AE5]"/>
+                                <span className="text-[#2A2B51] dark:text-white">2</span>
                             </div>
-                            <div className="bg-white flex flex-col rounded-3xl items-center py-6 px-28 gap-3 shadow-sm">
-                                <FontAwesomeIcon icon={imovel.icons[3]} className="mr-1 w-[16px] h-[16px] text-[#004AE5]"/>
-                                <span className="text-[#2A2B51]">1</span>
+                            <div className="bg-white dark:bg-[#1f1f25] flex flex-col rounded-3xl items-center py-6 px-28 gap-3 shadow-sm">
+                                <FontAwesomeIcon icon={imovel.icons[3]} className="mr-1 w-[16px] h-[16px] dark:text-[#819BFF] text-[#004AE5]"/>
+                                <span className="text-[#2A2B51] dark:text-white">1</span>
                             </div>
-                            <div className="bg-white flex flex-col rounded-3xl items-center py-6 px-26 gap-3 shadow-sm">
-                                <FontAwesomeIcon icon={imovel.icons[4]} className="mr-1 w-[16px] h-[16px] text-[#004AE5]"/>
-                                <span className="text-[#2A2B51]">40m²</span>
+                            <div className="bg-white dark:bg-[#1f1f25] flex flex-col rounded-3xl items-center py-6 px-26 gap-3 shadow-sm">
+                                <FontAwesomeIcon icon={imovel.icons[4]} className="mr-1 w-[16px] h-[16px] dark:text-[#819BFF] text-[#004AE5]"/>
+                                <span className="text-[#2A2B51] dark:text-white">40m²</span>
                             </div>
                         </div>
                     </section>
                     <section className="flex flex-col gap-4 w-[1050px] mt-8 mb-12">
-                        <h2 className="text-[#545F71] font-bold text-2xl">Especificações do imóvel</h2>
+                        <h2 className="text-[#545F71] font-bold text-2xl dark:text-white">Especificações do imóvel</h2>
                         <div className="grid grid-cols-4 gap-7 w-[800px]">
-                            <div className="bg-white flex flex-col rounded-4xl items-center py-6 gap-3 shadow-sm text-center">
-                                <FontAwesomeIcon icon={imovel.icons[12]} className="mr-1 w-[16px] h-[16px] text-[#004AE5]"/>
-                                <span className="text-[#2A2B51]">Internet inclusa</span>
+                            <div className="bg-white dark:bg-[#1f1f25] flex flex-col rounded-4xl items-center py-6 gap-3 shadow-sm text-center">
+                                <FontAwesomeIcon icon={imovel.icons[12]} className="mr-1 w-[16px] h-[16px] dark:text-[#819BFF] text-[#004AE5]"/>
+                                <span className="text-[#2A2B51] dark:text-white">Internet inclusa</span>
                             </div>
-                            <div className="bg-white flex flex-col rounded-4xl items-center py-6 gap-3 shadow-sm text-center">
-                                <FontAwesomeIcon icon={imovel.icons[5]} className="mr-1 w-[16px] h-[16px] text-[#004AE5]"/>
-                                <span className="text-[#2A2B51]">Apenas mulheres</span>
+                            <div className="bg-white dark:bg-[#1f1f25] flex flex-col rounded-4xl items-center py-6 gap-3 shadow-sm text-center">
+                                <FontAwesomeIcon icon={imovel.icons[5]} className="mr-1 w-[16px] h-[16px] dark:text-[#819BFF] text-[#004AE5]"/>
+                                <span className="text-[#2A2B51] dark:text-white">Apenas mulheres</span>
                             </div>
-                            <div className="bg-white flex flex-col rounded-4xl items-center py-6 gap-3 shadow-sm text-center">
-                                <FontAwesomeIcon icon={imovel.icons[6]} className="mr-1 w-[16px] h-[16px] text-[#004AE5]"/>
-                                <span className="text-[#2A2B51]">Luz inclusa</span>
+                            <div className="bg-white dark:bg-[#1f1f25] flex flex-col rounded-4xl items-center py-6 gap-3 shadow-sm text-center">
+                                <FontAwesomeIcon icon={imovel.icons[6]} className="mr-1 w-[16px] h-[16px] dark:text-[#819BFF] text-[#004AE5]"/>
+                                <span className="text-[#2A2B51] dark:text-white">Luz inclusa</span>
                             </div>
-                            <div className="bg-white flex flex-col rounded-4xl items-center py-6 gap-3 shadow-sm text-center">
-                                <FontAwesomeIcon icon={imovel.icons[7]} className="mr-1 w-[16px] h-[16px] text-[#004AE5]"/>
-                                <span className="text-[#2A2B51]">Água inclusa</span>
+                            <div className="bg-white dark:bg-[#1f1f25] flex flex-col rounded-4xl items-center py-6 gap-3 shadow-sm text-center">
+                                <FontAwesomeIcon icon={imovel.icons[7]} className="mr-1 w-[16px] h-[16px] dark:text-[#819BFF] text-[#004AE5]"/>
+                                <span className="text-[#2A2B51] dark:text-white">Água inclusa</span>
                             </div>
-                            <div className="bg-white flex flex-col rounded-4xl items-center py-6 gap-3 shadow-sm text-center">
-                                <FontAwesomeIcon icon={imovel.icons[8]} className="mr-1 w-[16px] h-[16px] text-[#004AE5]"/>
-                                <span className="text-[#2A2B51]">Elevador</span>
+                            <div className="bg-white dark:bg-[#1f1f25] flex flex-col rounded-4xl items-center py-6 gap-3 shadow-sm text-center">
+                                <FontAwesomeIcon icon={imovel.icons[8]} className="mr-1 w-[16px] h-[16px] dark:text-[#819BFF] text-[#004AE5]"/>
+                                <span className="text-[#2A2B51] dark:text-white">Elevador</span>
                             </div>
-                            <div className="bg-white flex flex-col rounded-4xl items-center py-6 gap-3 shadow-sm text-center">
-                                <FontAwesomeIcon icon={imovel.icons[9]} className="mr-1 w-[16px] h-[16px] text-[#004AE5]"/>
-                                <span className="text-[#2A2B51]">Escada</span>
+                            <div className="bg-white dark:bg-[#1f1f25] flex flex-col rounded-4xl items-center py-6 gap-3 shadow-sm text-center">
+                                <FontAwesomeIcon icon={imovel.icons[9]} className="mr-1 w-[16px] h-[16px] dark:text-[#819BFF] text-[#004AE5]"/>
+                                <span className="text-[#2A2B51] dark:text-white">Escada</span>
                             </div>
-                            <div className="bg-white flex flex-col rounded-4xl items-center py-6 gap-3 shadow-sm text-center">
-                                <FontAwesomeIcon icon={imovel.icons[11]} className="mr-1 w-[16px] h-[16px] text-[#004AE5]"/>
-                                <span className="text-[#2A2B51]">Área de lazer</span>
+                            <div className="bg-white dark:bg-[#1f1f25] flex flex-col rounded-4xl items-center py-6 gap-3 shadow-sm text-center">
+                                <FontAwesomeIcon icon={imovel.icons[11]} className="mr-1 w-[16px] h-[16px] dark:text-[#819BFF] text-[#004AE5]"/>
+                                <span className="text-[#2A2B51] dark:text-white">Área de lazer</span>
                             </div>
-                            <div className="bg-white flex flex-col rounded-4xl items-center py-6 gap-3 shadow-sm text-center">
-                                <FontAwesomeIcon icon={imovel.icons[10]} className="mr-1 w-[16px] h-[16px] text-[#004AE5]"/>
-                                <span className="text-[#2A2B51]">Garagem</span>
+                            <div className="bg-white dark:bg-[#1f1f25] flex flex-col rounded-4xl items-center py-6 gap-3 shadow-sm text-center">
+                                <FontAwesomeIcon icon={imovel.icons[10]} className="mr-1 w-[16px] h-[16px] dark:text-[#819BFF] text-[#004AE5]"/>
+                                <span className="text-[#2A2B51] dark:text-white">Garagem</span>
                             </div>
                         </div>
                     </section>

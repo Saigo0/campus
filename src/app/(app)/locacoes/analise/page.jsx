@@ -43,7 +43,7 @@ export default function Analise(){
         <div className="flex flex-col w-full max-w-6xl mx-auto px-4">
             <div className="flex flex-col mb-2 ml-35">
                 <H1>Formulários para Análise</H1>
-                <p className="text-[#575881] font-semibold">Há 4 imóveis aguardando pela liberação da análise</p>
+                <p className="text-[#575881] dark:text-white font-semibold">Há 4 imóveis aguardando pela liberação da análise</p>
             </div>
 
             <Main>
