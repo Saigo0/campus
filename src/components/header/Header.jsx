@@ -2,7 +2,7 @@
 
 import Logo from "@/components/logo/Logo";
 import RedirectButton from "../buttons/RedirectButton";
-import Theme from "@/components/Theme";
+import Theme from "@/components/theme/Theme";
 
 function Header() {
   return (
