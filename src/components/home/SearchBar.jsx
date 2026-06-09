@@ -6,14 +6,6 @@ export default function SearchBar() {
     <div className="bg-white dark:bg-[#1f1f25]  mx-10 rounded-4xl py-4 px-6 flex flex-row items-center justify-center shadow-lg gap-10">
       <div className="flex flex-col">
         <span className="text-[#A29F9F] dark:text-white text-md">
-          LOCALIZAÇÃO
-        </span>
-        <span className="text-[#545F71] dark:text-white">
-          Onde pretende morar?
-        </span>
-      </div>
-      <div className="flex flex-col">
-        <span className="text-[#A29F9F] dark:text-white text-md">
           FILTRAGEM
         </span>
         <span className="text-[#545F71] dark:text-white">
