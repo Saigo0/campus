@@ -51,7 +51,7 @@ export default function Home(){
         
         <Main>
             <SearchBar/>
-            <GridLocCards imoveisMockados={imoveisMockadosAprovados}></GridLocCards>
+            <GridLocCards imoveis={imoveisMockadosAprovados}></GridLocCards>
         </Main>
         </>
     )
