@@ -8,11 +8,41 @@ import InputLogin from "@/components/login/InputLogin";
 import { useState } from "react";
 import LoginButton from "@/components/buttons/ButtonForms";
 import Link from "next/link";
+import ProfilePicture from "@/components/forms/locador/ProfilePicture";
+import api from "@/app/utils/api";
 
 function CadastroLocador() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const locador = true;
+  const [profilePicture, setProfilePicture] = useState();
+
+  async function cadastrarLocador(e) {
+    e.preventDefault();
+
+    try {
+      const formData = new FormData();
+
+      formData.append("nome", name);
+      formData.append("email", email);
+      formData.append("senha", password);
+      formData.append("telefone", phone);
+      formData.append("locador", true);
+      formData.append("administrador", false);
+
+      if (profilePicture) {
+        formData.append("file", profilePicture);
+      }
+
+      const response = await api.post("/usuarios", formData);
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <Main>
@@ -25,13 +55,33 @@ function CadastroLocador() {
       ></Image>
       <SectionLogin>
         <h1>Seja bem-vindo(a) ao CampUs!</h1>
-        <FormsLogin>
+        <FormsLogin onSubmit={cadastrarLocador}>
+          <ProfilePicture
+            image={profilePicture}
+            setImage={setProfilePicture}
+          ></ProfilePicture>
+          <InputLogin
+            label="Nome completo"
+            value={name}
+            onChange={setName}
+            required
+            placeholder="José da Silva"
+            id="emailLocador"
+          ></InputLogin>
           <InputLogin
             label="Email"
             value={email}
             onChange={setEmail}
             required
-            placeholder="anaClara"
+            placeholder="josesilva@gmail.com"
+            id="emailLocador"
+          ></InputLogin>
+          <InputLogin
+            label="Telefone"
+            value={phone}
+            onChange={setPhone}
+            required
+            placeholder="(47) 99999-9999"
             id="emailLocador"
           ></InputLogin>
           <InputLogin
@@ -52,7 +102,12 @@ function CadastroLocador() {
           ></InputLogin>
           <LoginButton>Cadastrar-se</LoginButton>
         </FormsLogin>
-        <span className="items-center text-sm">Já tem uma conta? <Link href="/login" className="text-[#1B3B99]">Entrar</Link></span>
+        <span className="items-center text-sm">
+          Já tem uma conta?{" "}
+          <Link href="/login" className="text-[#1B3B99]">
+            Entrar
+          </Link>
+        </span>
       </SectionLogin>
     </Main>
   );

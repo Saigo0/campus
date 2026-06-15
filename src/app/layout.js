@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
       className={`${plusJakarta.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-screen flex flex-col bg-[#EFEFFF] dark:bg-[#131318]">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
