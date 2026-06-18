@@ -1,6 +1,7 @@
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/theme/ThemeProvider";
+import { AuthProvider } from "./context/AuthContext";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -20,7 +21,9 @@ export default function RootLayout({ children }) {
       className={`${plusJakarta.variable} h-full antialiased`}
     >
       <body className="min-h-screen flex flex-col bg-[#EFEFFF] dark:bg-[#131318]">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

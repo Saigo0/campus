@@ -8,6 +8,8 @@ import InformacoesGerais from "@/components/forms/locacao/InformacoesGerais";
 import EspecificacoesCapacidade from "@/components/forms/locacao/EspecificacoesCapacidade";
 import InformacoesAdicionais from "@/components/forms/locacao/InformacoesAdicionais";
 import Navigation from "@/components/forms/navegacao/Navigation";
+import { useAuth } from "@/app/context/AuthContext";
+import api from "@/app/utils/api";
 
 function CadastroLocacao() {
   const [cidade, setCidade] = useState("");
@@ -16,7 +18,7 @@ function CadastroLocacao() {
   const [rua, setRua] = useState("");
   const [numero, setNumero] = useState("");
   const [distanciaCeavi, setDistanciaCeavi] = useState("");
-  
+
   const [titulo, setTitulo] = useState("");
   const [descricao, setDescricao] = useState("");
   const [regras, setRegras] = useState("");
@@ -34,6 +36,7 @@ function CadastroLocacao() {
     useState(0);
   const [quantidadeQuartosTriplos, setQuantidadeQuartosTriplos] = useState(0);
   const [tipoImovel, setTipoImovel] = useState("");
+  const [tipoQuarto, setTipoQuarto] = useState("");
 
   const [eletricidade, setEletricidade] = useState(false);
   const [agua, setAgua] = useState(false);
@@ -42,6 +45,7 @@ function CadastroLocacao() {
 
   const [step, setStep] = useState(1);
 
+  const { isAuthenticated } = useAuth();
   const router = useRouter();
 
   const [selectedItems, setSelectedItems] = useState([]);
@@ -78,13 +82,55 @@ function CadastroLocacao() {
     { value: "12m", label: "12 meses" },
   ];
 
-  function registerLocacao(e) {
+  async function registerLocacao(e) {
     e.preventDefault();
-
-    const validatedData = validateData();
-    if (validatedData) {
-      router.push("/home");
-    }
+    try {
+      const imovel = {
+        idLocador,
+        dadosGerais: {
+          titulo,
+          descricao,
+          regras,
+          valorCondominio: taxaCondominio,
+          valorAluguel: aluguel,
+        },
+        endereco: {
+          cidade,
+          distanciaCeavi,
+          numero,
+          rua,
+          bairro,
+          cep,
+        },
+        especificacoes: {
+          areaMetrosQuad: areaImovel,
+          tipoQuarto,
+          tipoAluguel: tipoImovel,
+          quantBanheiros: quantidadeBanheiros,
+          quantQuartos: quantidadeQuartos,
+        },
+        comodidades: {
+          mobiliado,
+          garagem,
+          pets,
+          piscina,
+          areaLazer,
+          elevador,
+          churrasqueira,
+          academia,
+          escada,
+          apenasMulheres,
+          apenasHomens,
+        },
+        inclusoes: {
+          eletricidade,
+          agua,
+          internet,
+          gas,
+        },
+      };
+      const res = await registerLocacao("/imoveis", imovel);
+    } catch (err) {}
   }
 
   const [erro, setErro] = useState(false);
@@ -126,7 +172,12 @@ function CadastroLocacao() {
 
   useEffect(() => {
     getImages();
-  }, []);
+    if (!isAuthenticated) {
+      router.push("/login");
+    }
+  }, [isAuthenticated, router]);
+
+  if (!isAuthenticated) return null;
 
   return (
     <>

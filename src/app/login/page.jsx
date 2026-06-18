@@ -8,17 +8,37 @@ import SectionLogin from "@/components/login/SectionLogin";
 import FormsLogin from "@/components/login/FormsLogin";
 import Link from "next/link";
 import Logo from "@/components/logo/Logo";
+import api from "@/app/utils/api";
+import { useAuth } from "@/app/context/AuthContext";
+import { useRouter } from "next/navigation";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const {setToken} = useAuth();
+  const router = useRouter();
 
+  async function login(e){
+    e.preventDefault();
+    try{
+      const res = await api.post("/login", {
+        email,
+        senha: password
+      });
+      console.log(res.data);
+      
+      setToken(res.data.token);
+      //router.push("/home");
+    }catch(err){
+      console.log(err.response.message);
+    }
+  }
   return (
     <Main>
       <Logo></Logo>
       <SectionLogin className="border-t-2 border-t-[#1B3B99] bg-white">
         <h1 className="font-bold">Seja bem-vindo(a) de volta!</h1>
-        <FormsLogin>
+        <FormsLogin onSubmit={login}>
           <InputLogin
             value={email}
             label={"Email"}
