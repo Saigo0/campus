@@ -33,14 +33,10 @@ export default function EspecificacoesCapacidade({
   setQuantidadeQuartos,
   quantidadeBanheiros,
   setQuantidadeBanheiros,
-  quantidadeQuartosDuplos,
-  setQuantidadeQuartosDuplos,
-  quantidadeQuartosIndividuais,
-  setQuantidadeQuartosIndividuais,
-  quantidadeQuartosTriplos,
-  setQuantidadeQuartosTriplos,
+  tipoQuarto,
+  setTipoQuarto,
   tipoImovel,
-  setTipoImovel
+  setTipoImovel,
 }) {
   return (
     <SectionInfo
@@ -144,68 +140,63 @@ export default function EspecificacoesCapacidade({
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3">
           <Option
             icon={faHouse}
-            onClick={() => setTipoImovel("Casa")}
-            selected={tipoImovel === "Casa"}
+            onClick={() => setTipoImovel("CASA")}
+            selected={tipoImovel === "CASA"}
           >
             Casa
           </Option>
           <Option
             icon={faBuilding}
-            onClick={() => setTipoImovel("Apartamento")}
-            selected={tipoImovel === "Apartamento"}
+            onClick={() => setTipoImovel("APARTAMENTO")}
+            selected={tipoImovel === "APARTAMENTO"}
           >
             Apartamento
           </Option>
           <Option
             icon={faDoorOpen}
-            onClick={() => setTipoImovel("Kitnet")}
-            selected={tipoImovel === "Kitnet"}
+            onClick={() => setTipoImovel("KITNET")}
+            selected={tipoImovel === "KITNET"}
           >
             Kitnet
           </Option>
           <Option
             icon={faBed}
-            onClick={() => setTipoImovel("Quarto")}
-            selected={tipoImovel === "Quarto"}
+            onClick={() => setTipoImovel("QUARTO")}
+            selected={tipoImovel === "QUARTO"}
           >
             Quarto
           </Option>
         </div>
-        <fieldset>
-          <legend className="text-sm text-gray-600">TIPO DO QUARTO</legend>
-        </fieldset>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3 w-full">
-          <Option icon={faUser}>
-            Individual
-            <input
-              type="number"
-              value={quantidadeQuartosIndividuais}
-              onChange={(e) => setQuantidadeQuartosIndividuais(e.target.value)}
-              min={0}
-              className="text-center focus:outline-none"
-            />
-          </Option>
-          <Option icon={faUserGroup}>
-            Duplo
-            <input
-              type="number"
-              value={quantidadeQuartosDuplos}
-              onChange={(e) => setQuantidadeQuartosDuplos(e.target.value)}
-              min={0}
-              className="text-center focus:outline-none"
-            />
-          </Option>
-          <Option icon={faUsers}>
-            Triplo
-            <input
-              type="number"
-              value={quantidadeQuartosTriplos}
-              onChange={(e) => setQuantidadeQuartosTriplos(e.target.value)}
-              min={0}
-              className="text-center focus:outline-none"
-            />
-          </Option>
-        </div>
+        {tipoImovel === "QUARTO" && (
+          <>
+            <fieldset>
+              <legend className="text-sm text-gray-600">TIPO DO QUARTO</legend>
+            </fieldset>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3 w-full">
+              <Option
+                icon={faUser}
+                onClick={() => setTipoQuarto("INDIVIDUAL")}
+                selected={tipoQuarto === "INDIVIDUAL"}
+              >
+                Individual
+              </Option>
+              <Option
+                icon={faUserGroup}
+                onClick={() => setTipoQuarto("DUPLO")}
+                selected={tipoQuarto === "DUPLO"}
+              >
+                Duplo
+              </Option>
+              <Option
+                icon={faUsers}
+                onClick={() => setTipoQuarto("TRIPLO")}
+                selected={tipoQuarto === "TRIPLO"}
+              >
+                Triplo
+              </Option>
+            </div>
+          </>
+        )}
       </BoxInfo>
     </SectionInfo>
   );

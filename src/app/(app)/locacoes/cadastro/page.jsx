@@ -31,10 +31,6 @@ function CadastroLocacao() {
   const [areaImovel, setAreaImovel] = useState("");
   const [quantidadeQuartos, setQuantidadeQuartos] = useState("");
   const [quantidadeBanheiros, setQuantidadeBanheiros] = useState("");
-  const [quantidadeQuartosDuplos, setQuantidadeQuartosDuplos] = useState(0);
-  const [quantidadeQuartosIndividuais, setQuantidadeQuartosIndividuais] =
-    useState(0);
-  const [quantidadeQuartosTriplos, setQuantidadeQuartosTriplos] = useState(0);
   const [tipoImovel, setTipoImovel] = useState("");
   const [tipoQuarto, setTipoQuarto] = useState("");
 
@@ -50,26 +46,29 @@ function CadastroLocacao() {
 
   const [selectedItems, setSelectedItems] = useState([]);
 
-  function handleImage(e) {
-    const files = Array.from(e.target.files || []);
+  const [images, setImages] = useState([]);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [files, setFiles] = useState([]);
 
-    const newImages = files.map((file) => ({
+  function handleImage(e) {
+    const selectedFiles = Array.from(e.target.files || []);
+
+    setFiles((prev) => [...prev, ...selectedFiles]);
+
+    const newImages = selectedFiles.map((file) => ({
       url: URL.createObjectURL(file),
     }));
 
     setImages((prev) => {
       const updated = [...prev, ...newImages];
 
-      if (!selectedImage && updated.length > 0) {
+      if (!selectedImage || updated.length === 1) {
         setSelectedImage(updated[0]);
       }
 
       return updated;
     });
   }
-
-  const [images, setImages] = useState([]);
-  const [selectedImage, setSelectedImage] = useState(null);
 
   const options = [
     { value: "3m", label: "3 meses" },
@@ -80,52 +79,87 @@ function CadastroLocacao() {
   async function registerLocacao(e) {
     e.preventDefault();
     try {
-      const imovel = {
-        idLocador: 1,
-        dadosGerais: {
-          titulo,
-          descricao,
-          regras,
-          valorCondominio: taxaCondominio,
-          valorAluguel: aluguel,
-        },
-        endereco: {
-          cidade,
-          distanciaCeavi,
-          numero,
-          rua,
-          bairro,
-          cep,
-        },
-        especificacoes: {
-          areaMetrosQuad: areaImovel,
-          tipoQuarto,
-          tipoAluguel: tipoImovel,
-          quantBanheiros: quantidadeBanheiros,
-          quantQuartos: quantidadeQuartos,
-        },
-        comodidades: {
-          mobiliado: selectedItems.includes("Mobiliado"),
-          garagem: selectedItems.includes("Garagem"),
-          pets: selectedItems.includes("Aceita pets"),
-          piscina: selectedItems.includes("Piscina"),
-          areaLazer: selectedItems.includes("Área de lazer"),
-          elevador: selectedItems.includes("Elevador"),
-          churrasqueira: selectedItems.includes("Churrasqueira"),
-          academia: selectedItems.includes("Academia"),
-          escada: selectedItems.includes("Escada"),
-          apenasMulheres: selectedItems.includes("Apenas mulheres"),
-          apenasHomens: selectedItems.includes("Apenas homens"),
-        },
-        inclusoes: {
-          eletricidade,
-          agua,
-          internet,
-          gas,
-        },
-      };
-      const res = await api.post("/imoveis", imovel);
-    } catch (err) {}
+      const formData = new FormData();
+
+      formData.append("idLocador", 1);
+
+      formData.append("dadosGerais.titulo", titulo);
+      formData.append("dadosGerais.descricao", descricao);
+      formData.append("dadosGerais.regras", regras);
+      formData.append("dadosGerais.valorCondominio", taxaCondominio);
+      formData.append("dadosGerais.valorAluguel", aluguel);
+
+      formData.append("endereco.cidade", cidade);
+      formData.append("endereco.distanciaCeavi", distanciaCeavi);
+      formData.append("endereco.numero", numero);
+      formData.append("endereco.rua", rua);
+      formData.append("endereco.bairro", bairro);
+      formData.append("endereco.cep", cep);
+
+      formData.append("especificacoes.areaMetrosQuad", areaImovel);
+      formData.append("especificacoes.tipoQuarto", "INDIVIDUAL");
+      formData.append("especificacoes.tipoAluguel", tipoImovel);
+      formData.append("especificacoes.quantBanheiros", quantidadeBanheiros);
+      formData.append("especificacoes.quantQuartos", quantidadeQuartos);
+
+      formData.append(
+        "comodidades.mobiliado",
+        selectedItems.includes("Mobiliado"),
+      );
+      formData.append(
+        "comodidades.garagem",
+        selectedItems.includes("Garagem"),
+      );
+      formData.append(
+        "comodidades.pets",
+        selectedItems.includes("Aceita pets"),
+      );
+      formData.append(
+        "comodidades.piscina",
+        selectedItems.includes("Piscina"),
+      );
+      formData.append(
+        "comodidades.areaLazer",
+        selectedItems.includes("Área de lazer"),
+      );
+      formData.append(
+        "comodidades.elevador",
+        selectedItems.includes("Elevador"),
+      );
+      formData.append(
+        "comodidades.churrasqueira",
+        selectedItems.includes("Churrasqueira"),
+      );
+      formData.append(
+        "comodidades.academia",
+        selectedItems.includes("Academia"),
+      );
+      formData.append("comodidades.escada", selectedItems.includes("Escada"));
+      formData.append(
+        "comodidades.apenasMulheres",
+        selectedItems.includes("Apenas mulheres"),
+      );
+      formData.append(
+        "comodidades.apenasHomens",
+        selectedItems.includes("Apenas homens"),
+      );
+
+      formData.append("inclusoes.eletricidade", eletricidade);
+      formData.append("inclusoes.agua", agua);
+      formData.append("inclusoes.internet", internet);
+      formData.append("inclusoes.gas", gas);
+
+      files.forEach((file) => {
+        formData.append("files", file);
+      });
+
+      const res = await api.post("/imoveis", formData);
+      console.log("deu certo");
+    } catch (err) {
+      console.log(err);
+      console.log(err.response);
+      
+    }
   }
 
   const [erro, setErro] = useState(false);
@@ -228,9 +262,7 @@ function CadastroLocacao() {
               numero={numero}
               quantidadeBanheiros={quantidadeBanheiros}
               quantidadeQuartos={quantidadeQuartos}
-              quantidadeQuartosDuplos={quantidadeQuartosDuplos}
-              quantidadeQuartosIndividuais={quantidadeQuartosIndividuais}
-              quantidadeQuartosTriplos={quantidadeQuartosDuplos}
+              tipoQuarto={tipoQuarto}
               rua={rua}
               setAreaImovel={setAreaImovel}
               setBairro={setBairro}
@@ -240,9 +272,7 @@ function CadastroLocacao() {
               setNumero={setNumero}
               setQuantidadeBanheiros={setQuantidadeBanheiros}
               setQuantidadeQuartos={setQuantidadeQuartos}
-              setQuantidadeQuartosDuplos={setQuantidadeQuartosDuplos}
-              setQuantidadeQuartosIndividuais={setQuantidadeQuartosIndividuais}
-              setQuantidadeQuartosTriplos={setQuantidadeQuartosTriplos}
+              setTipoQuarto={setTipoQuarto}
               setRua={setRua}
               setTipoImovel={setTipoImovel}
               tipoImovel={tipoImovel}
