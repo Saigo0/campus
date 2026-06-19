@@ -45,36 +45,31 @@ function CadastroLocacao() {
 
   const [step, setStep] = useState(1);
 
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, loading } = useAuth();
   const router = useRouter();
 
   const [selectedItems, setSelectedItems] = useState([]);
 
-  async function handleImage(e) {
-    const file = e.target.files?.[0];
-    if (!file) return;
+  function handleImage(e) {
+    const files = Array.from(e.target.files || []);
 
-    const formData = new FormData();
-    formData.append("file", file);
+    const newImages = files.map((file) => ({
+      url: URL.createObjectURL(file),
+    }));
 
-    const res = await fetch("/api/upload", {
-      method: "POST",
-      body: formData,
+    setImages((prev) => {
+      const updated = [...prev, ...newImages];
+
+      if (!selectedImage && updated.length > 0) {
+        setSelectedImage(updated[0]);
+      }
+
+      return updated;
     });
-
-    const data = await res.json();
-
-    getImages();
   }
 
   const [images, setImages] = useState([]);
-
-  async function getImages() {
-    const res = await fetch("/api/upload");
-    const data = await res.json();
-    console.log(data);
-    setImages(data);
-  }
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const options = [
     { value: "3m", label: "3 meses" },
@@ -86,7 +81,7 @@ function CadastroLocacao() {
     e.preventDefault();
     try {
       const imovel = {
-        idLocador,
+        idLocador: 1,
         dadosGerais: {
           titulo,
           descricao,
@@ -110,17 +105,17 @@ function CadastroLocacao() {
           quantQuartos: quantidadeQuartos,
         },
         comodidades: {
-          mobiliado,
-          garagem,
-          pets,
-          piscina,
-          areaLazer,
-          elevador,
-          churrasqueira,
-          academia,
-          escada,
-          apenasMulheres,
-          apenasHomens,
+          mobiliado: selectedItems.includes("Mobiliado"),
+          garagem: selectedItems.includes("Garagem"),
+          pets: selectedItems.includes("Aceita pets"),
+          piscina: selectedItems.includes("Piscina"),
+          areaLazer: selectedItems.includes("Área de lazer"),
+          elevador: selectedItems.includes("Elevador"),
+          churrasqueira: selectedItems.includes("Churrasqueira"),
+          academia: selectedItems.includes("Academia"),
+          escada: selectedItems.includes("Escada"),
+          apenasMulheres: selectedItems.includes("Apenas mulheres"),
+          apenasHomens: selectedItems.includes("Apenas homens"),
         },
         inclusoes: {
           eletricidade,
@@ -129,7 +124,7 @@ function CadastroLocacao() {
           gas,
         },
       };
-      const res = await registerLocacao("/imoveis", imovel);
+      const res = await api.post("/imoveis", imovel);
     } catch (err) {}
   }
 
@@ -171,13 +166,18 @@ function CadastroLocacao() {
   }
 
   useEffect(() => {
-    getImages();
-    if (!isAuthenticated) {
+    if (!loading && !isAuthenticated) {
       router.push("/login");
     }
-  }, [isAuthenticated, router]);
+  }, [loading, isAuthenticated, router]);
 
-  if (!isAuthenticated) return null;
+  if (loading) {
+    return <div>Carregando...</div>;
+  }
+
+  if (!isAuthenticated) {
+    return null;
+  }
 
   return (
     <>
@@ -194,6 +194,9 @@ function CadastroLocacao() {
           <Erro erro={erro} conteudo={conteudoErro}></Erro>
           {step == 1 && (
             <InformacoesGerais
+              setImages={setImages}
+              setSelectedImage={setSelectedImage}
+              selectedImage={selectedImage}
               aluguel={aluguel}
               setAluguel={setAluguel}
               condominio={condominio}

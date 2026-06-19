@@ -25,10 +25,9 @@ function Login() {
         email,
         senha: password
       });
-      console.log(res.data);
-      
+      localStorage.setItem("token", res.data.token);
       setToken(res.data.token);
-      //router.push("/home");
+      router.push("/home");
     }catch(err){
       console.log(err.response.message);
     }

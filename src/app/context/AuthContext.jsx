@@ -7,19 +7,36 @@ const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [token, setToken] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Sempre que o token mudar, atualiza a referência usada pelo interceptor
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+
+    if (storedToken) {
+      setToken(storedToken);
+    }
+
+    setLoading(false);
+  }, []);
+
   useEffect(() => {
     setTokenGetter(() => token);
   }, [token]);
 
   function logout() {
+    localStorage.removeItem("token");
     setToken(null);
   }
 
   return (
     <AuthContext.Provider
-      value={{ token, setToken, logout, isAuthenticated: !!token }}
+      value={{
+        token,
+        setToken,
+        loading,
+        logout,
+        isAuthenticated: !!token,
+      }}
     >
       {children}
     </AuthContext.Provider>

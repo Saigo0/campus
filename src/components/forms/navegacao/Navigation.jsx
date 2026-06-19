@@ -2,7 +2,7 @@ import NavigationOption from "./NavigationOption";
 
 export default function Navigation({ step, setStep }) {
   return (
-    <nav className="text-gray-600 w-3/4 mx-auto">
+    <nav className=" dark:text-white w-3/4 mx-auto">
       <ol className="flex flex-row justify-between">
         <NavigationOption
           setStep={setStep}

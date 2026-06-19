@@ -1,8 +1,12 @@
+"use client";
+
 import {
   faHouse,
   faMoneyBill,
   faAddressBook,
   faPhotoFilm,
+  faEllipsisVertical,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import Carrossel from "@/components/forms/Carrossel";
 import Select from "@/components/forms/Select";
@@ -10,6 +14,8 @@ import TextArea from "@/components/inputs/TextArea";
 import SectionInfo from "@/components/forms/SectionInfo";
 import BoxInfo from "@/components/forms/InfoBox";
 import Input from "@/components/inputs/Input";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 
 export default function InformacoesGerais({
   titulo,
@@ -30,8 +36,26 @@ export default function InformacoesGerais({
   images,
   setCondominio,
   total,
-  setTotal
+  setTotal,
+  selectedImage,
+  setSelectedImage,
+  setImages
 }) {
+  const [showModal, setShowModal] = useState(false);
+
+  function deleteImage() {
+    const updatedImages = images.filter((img) => img.url !== selectedImage.url);
+
+    setImages(updatedImages);
+
+    if (updatedImages.length > 0) {
+      setSelectedImage(updatedImages[0]);
+    } else {
+      setSelectedImage(null);
+    }
+    setShowModal(false);
+  }
+
   return (
     <SectionInfo
       title={"Informações gerais"}
@@ -45,14 +69,29 @@ export default function InformacoesGerais({
         addImage
         onChange={handleImage}
       >
-        {images.length > 0 && (
-          <img
-            src={images[0].url}
-            alt=""
-            className="h-140 object-cover w-full mb-5 rounded-xl"
-          />
+        {selectedImage && (
+          <div className="relative w-full h-140 mb-5">
+            <img
+              src={selectedImage.url}
+              alt=""
+              className="h-full object-cover w-full rounded-xl"
+            />
+            <div className="absolute top-4 right-4 bg-[#EFEFFF] text-black dark:text-white dark:bg-[#131318] rounded-xl shadow-lg overflow-hidden z-10">
+              <button
+                type="button"
+                onClick={deleteImage}
+                className="px-4 py-2 dark:text-white hover:bg-[#1B3B99] hover:text-white dark:hover:text-black dark:hover:bg-[#b6c4ff] w-full text-left"
+              >
+                <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
+              </button>
+            </div>
+          </div>
         )}
-        <Carrossel images={images}></Carrossel>
+        <Carrossel
+          images={images}
+          selectedImage={selectedImage}
+          setSelectedImage={setSelectedImage}
+        ></Carrossel>
       </BoxInfo>
       <div className="flex flex-col md:flex-row gap-10">
         <div className=" w-full md:w-2/3">

@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
-function Carrossel({ images = [] }) {
+function Carrossel({ images = [], selectedImage, setSelectedImage }) {
   const swiperRef = useRef(null);
   return (
     <>
@@ -21,12 +21,17 @@ function Carrossel({ images = [] }) {
             slidesPerView={3}
             className="w-full overflow-visible h-40"
           >
-            {images.map((img) => (
-              <SwiperSlide>
+            {images.map((img, index) => (
+              <SwiperSlide key={index}>
                 <img
                   src={img.url}
                   alt="Imagem"
-                  className="object-cover w-full h-full rounded-xl"
+                  onClick={() => setSelectedImage(img)}
+                  className={`object-cover w-full h-full rounded-xl cursor-pointer ${
+                    selectedImage?.url === img.url
+                      ? "border-3 border-[#1B3B99] dark:border-[#b6c4ff]"
+                      : ""
+                  }`}
                 />
               </SwiperSlide>
             ))}
