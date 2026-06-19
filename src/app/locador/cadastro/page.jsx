@@ -1,7 +1,6 @@
 "use client";
 
 import Main from "@/components/login/Main";
-import Image from "next/image";
 import SectionLogin from "@/components/login/SectionLogin";
 import FormsLogin from "@/components/login/FormsLogin";
 import InputLogin from "@/components/login/InputLogin";
@@ -10,6 +9,7 @@ import LoginButton from "@/components/buttons/ButtonForms";
 import Link from "next/link";
 import ProfilePicture from "@/components/forms/locador/ProfilePicture";
 import api from "@/app/utils/api";
+import Logo from "@/components/logo/Logo";
 
 function CadastroLocador() {
   const [email, setEmail] = useState("");
@@ -46,13 +46,7 @@ function CadastroLocador() {
 
   return (
     <Main>
-      <Image
-        src="/images/logo.png"
-        alt="Logo"
-        width={120}
-        height={120}
-        className=""
-      ></Image>
+      <Logo></Logo>
       <SectionLogin>
         <h1>Seja bem-vindo(a) ao CampUs!</h1>
         <FormsLogin onSubmit={cadastrarLocador}>
@@ -104,7 +98,7 @@ function CadastroLocador() {
         </FormsLogin>
         <span className="items-center text-sm">
           Já tem uma conta?{" "}
-          <Link href="/login" className="text-[#1B3B99]">
+          <Link href="/login" className="text-[#1B3B99] dark:text-[#819BFF]">
             Entrar
           </Link>
         </span>
