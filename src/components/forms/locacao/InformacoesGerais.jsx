@@ -7,6 +7,8 @@ import {
   faPhotoFilm,
   faEllipsisVertical,
   faTrash,
+  faRightLeft,
+  faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import Carrossel from "@/components/forms/Carrossel";
 import Select from "@/components/forms/Select";
@@ -16,6 +18,7 @@ import BoxInfo from "@/components/forms/InfoBox";
 import Input from "@/components/inputs/Input";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import { FaRightLong } from "react-icons/fa6";
 
 export default function InformacoesGerais({
   titulo,
@@ -36,10 +39,11 @@ export default function InformacoesGerais({
   images,
   setCondominio,
   total,
-  setTotal,
   selectedImage,
   setSelectedImage,
-  setImages
+  setImages,
+  setStep,
+  errors,
 }) {
   const [showModal, setShowModal] = useState(false);
 
@@ -56,6 +60,10 @@ export default function InformacoesGerais({
     setShowModal(false);
   }
 
+  function goToTheNext() {
+    setStep((prev) => prev + 1);
+  }
+
   return (
     <SectionInfo
       title={"Informações gerais"}
@@ -63,6 +71,11 @@ export default function InformacoesGerais({
       icon={faHouse}
       className="flex flex-col gap-10"
     >
+      {errors.geral && (
+        <div className="mb-4 p-3 rounded-md bg-red-100 text-red-600 text-sm">
+          {errors.geral}
+        </div>
+      )}
       <BoxInfo
         title={"Galeria Visual"}
         icon={faPhotoFilm}
@@ -107,6 +120,7 @@ export default function InformacoesGerais({
               onChange={setTitulo}
               required
               id={"titulo"}
+              error={errors.titulo}
               rounded
             ></Input>
             <TextArea
@@ -142,6 +156,7 @@ export default function InformacoesGerais({
               type="number"
               rounded
               id={"aluguel"}
+              error={errors.aluguel}
             ></Input>
             <label htmlFor="tempoContrato" className="text-sm text-gray-600">
               TEMPO MÍNIMO DE CONTRATO
@@ -180,11 +195,16 @@ export default function InformacoesGerais({
             )}
             <div className="flex justify-between p-3 rounded-3xl dark:bg-[#03132c] bg-[#F2EFFF]">
               <p className="text-sm">Total estimado</p>
-              <p>R$</p>
+              <p>R$ {total}</p>
             </div>
           </BoxInfo>
         </div>
       </div>
+      <FontAwesomeIcon
+        className="text-white rounded-3xl bg-linear-to-r from-[#1B3B99] to-[#819BFF] dark:from-[#b6c4ff] dark:text-black dark:to-[#819BFF] w-full p-2"
+        icon={faArrowRight}
+        onClick={goToTheNext}
+      ></FontAwesomeIcon>
     </SectionInfo>
   );
 }

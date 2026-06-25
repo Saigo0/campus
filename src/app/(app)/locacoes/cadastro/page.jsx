@@ -12,6 +12,7 @@ import { useAuth } from "@/app/context/AuthContext";
 import api from "@/app/utils/api";
 
 function CadastroLocacao() {
+  const [id, setId] = useState();
   const [cidade, setCidade] = useState("");
   const [cep, setCep] = useState("");
   const [bairro, setBairro] = useState("");
@@ -78,46 +79,48 @@ function CadastroLocacao() {
 
   async function registerLocacao(e) {
     e.preventDefault();
+
+    if (!validateData()) {
+      return;
+    }
+
     try {
       const formData = new FormData();
 
-      formData.append("idLocador", 1);
+      formData.append("idLocador", id);
 
       formData.append("dadosGerais.titulo", titulo);
       formData.append("dadosGerais.descricao", descricao);
       formData.append("dadosGerais.regras", regras);
-      formData.append("dadosGerais.valorCondominio", taxaCondominio);
-      formData.append("dadosGerais.valorAluguel", aluguel);
+      formData.append("dadosGerais.valorCondominio", taxaCondominio || 0);
+      formData.append("dadosGerais.valorAluguel", aluguel || 0);
 
       formData.append("endereco.cidade", cidade);
-      formData.append("endereco.distanciaCeavi", distanciaCeavi);
+      formData.append("endereco.distanciaCeavi", distanciaCeavi || 0);
       formData.append("endereco.numero", numero);
       formData.append("endereco.rua", rua);
       formData.append("endereco.bairro", bairro);
       formData.append("endereco.cep", cep);
 
-      formData.append("especificacoes.areaMetrosQuad", areaImovel);
-      formData.append("especificacoes.tipoQuarto", "INDIVIDUAL");
+      formData.append("especificacoes.areaMetrosQuad", areaImovel || 0);
+      formData.append("especificacoes.tipoQuarto", tipoQuarto);
       formData.append("especificacoes.tipoAluguel", tipoImovel);
-      formData.append("especificacoes.quantBanheiros", quantidadeBanheiros);
-      formData.append("especificacoes.quantQuartos", quantidadeQuartos);
+      formData.append(
+        "especificacoes.quantBanheiros",
+        quantidadeBanheiros || 0,
+      );
+      formData.append("especificacoes.quantQuartos", quantidadeQuartos || 0);
 
       formData.append(
         "comodidades.mobiliado",
         selectedItems.includes("Mobiliado"),
       );
-      formData.append(
-        "comodidades.garagem",
-        selectedItems.includes("Garagem"),
-      );
+      formData.append("comodidades.garagem", selectedItems.includes("Garagem"));
       formData.append(
         "comodidades.pets",
         selectedItems.includes("Aceita pets"),
       );
-      formData.append(
-        "comodidades.piscina",
-        selectedItems.includes("Piscina"),
-      );
+      formData.append("comodidades.piscina", selectedItems.includes("Piscina"));
       formData.append(
         "comodidades.areaLazer",
         selectedItems.includes("Área de lazer"),
@@ -154,56 +157,75 @@ function CadastroLocacao() {
       });
 
       const res = await api.post("/imoveis", formData);
-      console.log("deu certo");
     } catch (err) {
-      console.log(err);
-      console.log(err.response);
-      
+      const newErrors = {};
+      newErrors.geral =
+        "Não foi possível cadastrar a locação, tente novamente mais tarde.";
+      setErro(newErrors);
     }
   }
 
   const [erro, setErro] = useState(false);
-  const [conteudoErro, setConteudoErro] = useState("");
 
   function validateData() {
-    if (
-      !cidade |
-      !bairro |
-      !rua |
-      !quantidadeBanheiros |
-      !distanciaCeavi |
-      !titulo |
-      !descricao |
-      !aluguel
-    ) {
-      setErro(true);
-      setConteudoErro(
-        "Não foi possível realizar o cadastro, há informações obrigatórias em branco.",
-      );
-      return false;
+    const newErrors = {};
+
+    if (!titulo.trim()) {
+      newErrors.titulo = "O título é obrigatório.";
     }
 
-    if (
-      quantidadeQuartos <
-      quantidadeQuartosDuplos +
-        quantidadeQuartosIndividuais +
-        quantidadeQuartosTriplos
-    ) {
-      setErro(true);
-      setConteudoErro(
-        "Não foi possível realizar o cadastro, a quantidade dos quartos é menor que a quantidade informada na quantidade de cada tipo de quarto.",
-      );
-      return false;
+    if (!descricao.trim()) {
+      newErrors.descricao = "A descrição é obrigatória.";
     }
 
-    return true;
+    if (!cidade.trim()) {
+      newErrors.cidade = "A cidade é obrigatória.";
+    }
+
+    if (!bairro.trim()) {
+      newErrors.bairro = "O bairro é obrigatório.";
+    }
+
+    if (!rua.trim()) {
+      newErrors.rua = "A rua é obrigatória.";
+    }
+
+    if (!cep.trim()) {
+      newErrors.cep = "O CEP é obrigatório.";
+    }
+
+    if (!tipoImovel) {
+      newErrors.tipoImovel = "Selecione um tipo de imóvel.";
+    }
+
+    if (!aluguel.trim()) {
+      newErrors.aluguel = "O valor do aluguel é obrigatório.";
+    }
+
+    if (!distanciaCeavi.trim()) {
+      newErrors.distanciaCeavi = "A distância do CEAVI é obrigatória.";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      newErrors.geral =
+        "Não foi possível cadastrar locação. Há dados obrigatórios em branco.";
+    }
+    
+    setErro(newErrors);
+
+    return Object.keys(newErrors).length === 0;
   }
 
   useEffect(() => {
+    setId(Number(localStorage.getItem("id")));
     if (!loading && !isAuthenticated) {
       router.push("/login");
     }
-  }, [loading, isAuthenticated, router]);
+    const valorAluguel = Number(aluguel) || 0;
+    const valorCondominio = condominio ? Number(taxaCondominio) || 0 : 0;
+
+    setTotal(valorAluguel + valorCondominio);
+  }, [loading, isAuthenticated, router, aluguel, taxaCondominio, condominio]);
 
   if (loading) {
     return <div>Carregando...</div>;
@@ -225,9 +247,9 @@ function CadastroLocacao() {
         </div>
         <Navigation setStep={setStep} step={step}></Navigation>
         <form onSubmit={registerLocacao}>
-          <Erro erro={erro} conteudo={conteudoErro}></Erro>
           {step == 1 && (
             <InformacoesGerais
+              setStep={setStep}
               setImages={setImages}
               setSelectedImage={setSelectedImage}
               selectedImage={selectedImage}
@@ -250,10 +272,12 @@ function CadastroLocacao() {
               setCondominio={setCondominio}
               total={total}
               setTotal={setTotal}
+              errors={erro}
             ></InformacoesGerais>
           )}
           {step == 2 && (
             <EspecificacoesCapacidade
+              setStep={setStep}
               areaImovel={areaImovel}
               bairro={bairro}
               cep={cep}
@@ -276,10 +300,12 @@ function CadastroLocacao() {
               setRua={setRua}
               setTipoImovel={setTipoImovel}
               tipoImovel={tipoImovel}
+              errors={erro}
             ></EspecificacoesCapacidade>
           )}
           {step == 3 && (
             <InformacoesAdicionais
+              setStep={setStep}
               agua={agua}
               eletricidade={eletricidade}
               gas={gas}
@@ -290,6 +316,7 @@ function CadastroLocacao() {
               setGas={setGas}
               setInternet={setInternet}
               setSelectedItems={setSelectedItems}
+              errors={erro}
             ></InformacoesAdicionais>
           )}
         </form>

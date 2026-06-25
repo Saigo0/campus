@@ -33,8 +33,8 @@ export default function InformacoesAdicionais({
   setInternet,
   gas,
   setGas,
+  errors
 }) {
-
   function selectItem(description) {
     setSelectedItems((prev) => {
       return prev.includes(description)
@@ -48,6 +48,11 @@ export default function InformacoesAdicionais({
       description={"Informe os detalhes adicionais sobre a sua locação."}
       title={"Informações Adicionais"}
     >
+      {errors.geral && (
+        <div className="mb-4 p-3 rounded-md bg-red-100 text-red-600 text-sm">
+          {errors.geral}
+        </div>
+      )}
       <div className="flex flex-row gap-10 mb-10">
         <BoxInfo
           title={"Comodidades e Instalações"}

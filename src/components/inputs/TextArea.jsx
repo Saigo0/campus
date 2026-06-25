@@ -15,7 +15,7 @@ function TextArea({
   return (
     <div className="flex flex-col w-full mb-3">
       <div className="flex justify-between text-sm">
-        <label htmlFor={id} className="dark:text-white text-gray-600">
+        <label htmlFor={id} className="dark:text-white text-gray-600 flex justify-center items-center gap-1">
           {label}
           {required && (
             <FontAwesomeIcon

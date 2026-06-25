@@ -10,6 +10,7 @@ import Link from "next/link";
 import ProfilePicture from "@/components/forms/locador/ProfilePicture";
 import api from "@/app/utils/api";
 import Logo from "@/components/logo/Logo";
+import { useRouter } from "next/navigation";
 
 function CadastroLocador() {
   const [email, setEmail] = useState("");
@@ -19,6 +20,8 @@ function CadastroLocador() {
   const [phone, setPhone] = useState("");
   const locador = true;
   const [profilePicture, setProfilePicture] = useState();
+
+  const router = useRouter();
 
   async function cadastrarLocador(e) {
     e.preventDefault();
@@ -37,10 +40,17 @@ function CadastroLocador() {
         formData.append("file", profilePicture);
       }
 
-      const response = await api.post("/usuarios", formData);
-      console.log(response);
+      const response = await fetch("http://localhost:8080/usuarios", {
+        method: "POST",
+        body: formData,
+      });
+      
+      router.push("/login");
     } catch (err) {
       console.log(err);
+      console.log(err.response);
+      console.log(err.response?.data);
+      console.log(err.response?.headers);
     }
   }
 
