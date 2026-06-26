@@ -1,7 +1,4 @@
-import { FaSearch } from "react-icons/fa";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faBed, faDog, faBath, faBorderAll, faWifi, faVenus, faBoltLightning, faDroplet, faElevator, faStairs, faSquareParking, faPuzzlePiece} from '@fortawesome/free-solid-svg-icons';
-import ButtonForms from "../buttons/ButtonForms";
+import LocIcons from "./LocIcons";
 import Link from "next/link";
 
 export default function LocCard({imovel}){
@@ -37,20 +34,11 @@ export default function LocCard({imovel}){
               </div>
             </div>
 
-            <div className="mt-2 text-md text-gray-600 dark:text-gray-300 truncate">
+            <div className="mt-2 text-md text-gray-600 dark:text-gray-300 flex flex-wrap">
               {imovel.address}
             </div>
             
-            <div className="flex flex-wrap gap-2 mt-auto pt-4">
-              {imovel.homeIcons?.map((icon, index) => (
-                <div key={index} className="flex items-center border border-black dark:border-white py-1 px-2 rounded-xl">
-                  <FontAwesomeIcon icon={icon} className="text-black dark:text-white mr-1 w-[14px] h-[14px]"/>
-                  <span className="text-xs text-black dark:text-white font-medium">
-                    {icon === faHouse ? "Casa" : icon === faBed ? "2" : icon === faDog ? "Pets" : icon === faBath ? "2" : icon === faBorderAll ? "40m²" : ""}
-                  </span>
-                </div>
-              ))}
-            </div>
+            <LocIcons icons={imovel.homeIcons}/>
             
           </div>
         </div>
