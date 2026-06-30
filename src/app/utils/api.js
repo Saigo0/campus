@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "/api",
+  baseURL: "http://localhost:8080",
 });
 
 let getTokenFn = null;
@@ -14,6 +14,7 @@ api.interceptors.request.use((config) => {
   const token = getTokenFn ? getTokenFn() : null;
 
   const publicRoutes = [
+    "/imoveis",
     "/login",
     "/locador/cadastro",
   ];

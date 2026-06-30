@@ -33,7 +33,10 @@ function Login() {
       setToken(res.data.token);
       
       router.push("/home");
-    } catch (err) {}
+    } catch (err) {
+      console.error("Status do Erro:", err.response?.status); 
+      alert("Falha ao entrar! Verifique o console para mais detalhes.");
+    }
   }
   return (
     <Main>
