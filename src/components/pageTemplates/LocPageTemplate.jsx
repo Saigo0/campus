@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Main from "@/components/home/Main";
 import Image from "next/image";
 import { faAngleUp, faAngleDown } from "@fortawesome/free-solid-svg-icons";
@@ -15,13 +15,41 @@ import LocSection from "@/components/forms/LocSection";
 import api from "@/app/utils/api";
 import { useRouter } from "next/navigation";
 
-export default function LocPageTemplate({ imovel, locador, imagens = [], isAdminMode = false, children }) {
+export default function LocPageTemplate({ imovel, locador, isAdminMode = false, children }) {
     const router = useRouter();
+    
+    const [imagens, setImagens] = useState(["https://placehold.co/800x500/e2e8f0/475569?text=Carregando..."]);
 
-    
-    
-    const [imagemPrincipal, setImagemPrincipal] = useState(imagens[0] || "https://via.placeholder.com/800x500");
+    const [imagemPrincipal, setImagemPrincipal] = useState(imagens[0]);
+
     const carrosselRef = useRef(null);
+
+    useEffect(() => {
+        async function buscarFotos() {
+
+            if (!imovel?.id) return;
+
+            try {
+
+                const res = await api.get(`/midia/imovel/${imovel.id}/fotos`);
+                const nomesArquivos = res.data;
+
+                if (nomesArquivos && nomesArquivos.length > 0) {
+                    const urlsCompletas = nomesArquivos.map(nome => `http://localhost:8080/midia/arquivo/${nome}`);
+                    setImagens(urlsCompletas);
+                    setImagemPrincipal(urlsCompletas[0]); 
+                } else {
+                    setImagens(["https://placehold.co/800x500/e2e8f0/475569?text=Sem+Foto"]);
+                    setImagemPrincipal("https://placehold.co/800x500/e2e8f0/475569?text=Sem+Foto");
+                }
+            } catch (error) {
+                console.error("Erro ao buscar fotos:", error);
+                setImagens(["https://placehold.co/800x500/e2e8f0/475569?text=Sem+Foto"]);
+                setImagemPrincipal("https://placehold.co/800x500/e2e8f0/475569?text=Sem+Foto");
+            }
+        }
+        buscarFotos();
+    }, [imovel?.id]);
 
     const rolarPraCima = () => {
         if(carrosselRef.current) carrosselRef.current.scrollBy({ top: -166, behavior: "smooth" });
@@ -66,28 +94,39 @@ export default function LocPageTemplate({ imovel, locador, imagens = [], isAdmin
 
             <div className="flex flex-row w-full max-w-6xl mx-auto px-4 py-8 gap-10 justify-center">
                 <div>
-                    <Image className="rounded-xl object-cover w-[800px] h-[500px] mt-9 shadow-lg transition-all duration-300" src={imagemPrincipal} alt="Imagem do Imóvel" width={800} height={500} />
+                    <Image className="rounded-xl object-cover w-[800px] h-[500px] mt-9 shadow-lg transition-all duration-300" unoptimized src={imagemPrincipal} alt="Imagem do Imóvel" width={800} height={500} />
                 </div>
                 
                 <div className="flex flex-col gap-4 mt-12">
-                    <button onClick={rolarPraCima} className="hover:bg-gray-100 rounded-full transition p-2">
-                        <FontAwesomeIcon icon={faAngleUp} className="cursor-pointer text-[#545F71] w-[16px] h-[16px]"/>
+                    <button onClick={rolarPraCima} className="hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition p-2">
+                        <FontAwesomeIcon icon={faAngleUp} className="cursor-pointer text-[#545F71] dark:text-gray-300 w-[16px] h-[16px]"/>
                     </button>
 
-                    <div ref={carrosselRef} className="flex flex-col gap-4 overflow-y-auto h-[400px] [&::-webkit-scrollbar]:hidden snap-y snap-mandatory scroll-smooth">
+                    <div ref={carrosselRef} className="flex flex-col gap-4 overflow-y-auto h-[400px] p-2 [&::-webkit-scrollbar]:hidden snap-y snap-mandatory scroll-smooth">
                         {imagens.map((imgSrc, index) => (
                             <div 
                                 key={index}
                                 onClick={() => setImagemPrincipal(imgSrc)}
-                                className={`shrink-0 snap-center cursor-pointer border-4 rounded-xl transition-all duration-300 ${imagemPrincipal === imgSrc ? "scale-105 border-blue-500" : "border-transparent hover:scale-105"} `}
+                                className={`shrink-0 snap-center cursor-pointer rounded-xl transition-all duration-300 ${
+                                    imagemPrincipal === imgSrc 
+                                    ? "scale-105 opacity-100 ring-2 ring-[#1B3B99] dark:ring-[#819BFF] dark:ring-offset-[#1f1f25]" 
+                                    : "opacity-50 hover:opacity-100 hover:scale-105"
+                                }`}
                             >
-                                <Image className="rounded-xl object-cover shadow-lg" src={imgSrc} alt="Miniatura" width={200} height={150} />
+                                <Image 
+                                    className="rounded-xl object-cover w-[200px] h-[150px]" 
+                                    src={imgSrc} 
+                                    unoptimized 
+                                    alt="Miniatura" 
+                                    width={200} 
+                                    height={150} 
+                                />
                             </div>
                         ))}
                     </div>
 
-                    <button onClick={rolarPraBaixo} className="hover:bg-gray-100 rounded-full transition p-2">
-                        <FontAwesomeIcon icon={faAngleDown} className="cursor-pointer text-[#545F71] w-[16px] h-[16px]"/>
+                    <button onClick={rolarPraBaixo} className="hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition p-2">
+                        <FontAwesomeIcon icon={faAngleDown} className="cursor-pointer text-[#545F71] dark:text-gray-300 w-[16px] h-[16px]"/>
                     </button>
                 </div>
             </div>
