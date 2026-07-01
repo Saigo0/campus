@@ -11,7 +11,7 @@ export default function LocAndLLCard({ imovel, locador }) {
     const nomeLocador = locador?.nome || "Locador Indisponível";
 
     return (
-        <div className="bg-white dark:bg-[#1f1f25] p-7 rounded-3xl mt-8 w-full flex flex-col gap-5">
+        <div className="bg-white dark:bg-[#1f1f25] p-7 rounded-3xl w-[320px] shrink-0 flex flex-col gap-5 shadow-sm border border-gray-100 dark:border-gray-800">
             <div className="flex flex-row gap-5">
                 <div>
                     <span className="text-2xl font-extrabold text-[#2A2B51] dark:text-white">{valorAluguel}</span>

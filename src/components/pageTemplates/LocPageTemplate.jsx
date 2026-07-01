@@ -15,7 +15,6 @@ import LocSection from "@/components/forms/LocSection";
 import api from "@/app/utils/api";
 import { useRouter } from "next/navigation";
 
-// As propriedades chegam reais do componente pai (A Página)
 export default function LocPageTemplate({ imovel, locador, imagens = [], isAdminMode = false, children }) {
     const router = useRouter();
 
@@ -36,7 +35,7 @@ export default function LocPageTemplate({ imovel, locador, imagens = [], isAdmin
         try {
             await api.put(`/imoveis/aprovar/${imovel.id}`);
             alert("Imóvel aprovado com sucesso!");
-            router.push("/locacoes/analise"); // Joga o admin de volta pra listagem
+            router.push("/locacoes/analise");
         } catch (err) {
             alert("Erro ao aprovar o imóvel.");
         }
@@ -52,7 +51,6 @@ export default function LocPageTemplate({ imovel, locador, imagens = [], isAdmin
 
     return (
         <>
-            {/* Header de Ação Exclusivo do Admin */}
             {isAdminMode && (
                 <div className="flex justify-end max-w-6xl mx-auto px-4 mt-8">
                     <div className="flex gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm">
@@ -95,8 +93,8 @@ export default function LocPageTemplate({ imovel, locador, imagens = [], isAdmin
             </div>
 
             <Main>
-                <div className="flex flex-row gap-8 w-[1050px]">
-                    <section className="flex flex-col">
+                <div className="flex flex-row justify-between gap-8 w-full max-w-[1150px]">
+                    <section className="flex flex-col w-[800px] shrink-0">
                         <H1>{imovel.dadosGerais.titulo}</H1>
                         <p className="text-[#545F71] dark:text-white mt-2">{imovel.dadosGerais.descricao}</p>
                     </section>
