@@ -8,7 +8,7 @@ export default function GridLocCapac({ imovel }) {
     if (!esp) return null;
 
     return (
-        <div className="grid grid-cols-3 gap-7 w-[800px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-7 w-full lg:w-[800px]">
 
             {esp.quantQuartos > 0 && (
                 <LocCapacCard 

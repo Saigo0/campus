@@ -31,7 +31,7 @@ export default function GridLocSpecs({ imovel }) {
     if (inc?.gas) specsAtivas.push({ icon: faFire, label: "Gás Incluso" });
 
     return (
-        <div className="grid grid-cols-4 gap-7 w-[800px]">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-7 w-full lg:w-[800px]">
 
             {specsAtivas.map((spec, index) => (
                 <LocSpecsCard 

@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Main from "@/components/home/Main";
 import Image from "next/image";
-import { faAngleUp, faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { faAngleUp, faAngleDown, faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import H1 from "@/components/heading/H1";
 import GridLocCapac from "@/components/grids/GridLocCapac";
@@ -19,18 +19,13 @@ export default function LocPageTemplate({ imovel, locador, isAdminMode = false, 
     const router = useRouter();
     
     const [imagens, setImagens] = useState(["https://placehold.co/800x500/e2e8f0/475569?text=Carregando..."]);
-
     const [imagemPrincipal, setImagemPrincipal] = useState(imagens[0]);
-
     const carrosselRef = useRef(null);
 
     useEffect(() => {
         async function buscarFotos() {
-
             if (!imovel?.id) return;
-
             try {
-
                 const res = await api.get(`/midia/imovel/${imovel.id}/fotos`);
                 const nomesArquivos = res.data;
 
@@ -92,17 +87,26 @@ export default function LocPageTemplate({ imovel, locador, isAdminMode = false, 
                 </div>
             )}
 
-            <div className="flex flex-row w-full max-w-6xl mx-auto px-4 py-8 gap-10 justify-center">
-                <div>
-                    <Image className="rounded-xl object-cover w-[800px] h-[500px] mt-9 shadow-lg transition-all duration-300" unoptimized src={imagemPrincipal} alt="Imagem do Imóvel" width={800} height={500} />
+            <div className="flex flex-col lg:flex-row w-full max-w-6xl mx-auto px-4 py-8 gap-4 lg:gap-10 justify-center">
+                
+                <div className="w-full lg:w-[800px] shrink-0">
+                    <Image 
+                        className="rounded-xl object-cover w-full h-[250px] md:h-[400px] lg:h-[500px] mt-0 lg:mt-9 shadow-lg transition-all duration-300" 
+                        unoptimized 
+                        src={imagemPrincipal} 
+                        alt="Imagem do Imóvel" 
+                        width={800} 
+                        height={500} 
+                    />
                 </div>
                 
-                <div className="flex flex-col gap-4 mt-12">
-                    <button onClick={rolarPraCima} className="hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition p-2">
+                <div className="flex flex-row lg:flex-col gap-4 mt-2 lg:mt-12 items-center w-full lg:w-auto">
+                    
+                    <button onClick={rolarPraCima} className="hidden lg:block hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition p-2 shrink-0">
                         <FontAwesomeIcon icon={faAngleUp} className="cursor-pointer text-[#545F71] dark:text-gray-300 w-[16px] h-[16px]"/>
                     </button>
 
-                    <div ref={carrosselRef} className="flex flex-col gap-4 overflow-y-auto h-[400px] p-2 [&::-webkit-scrollbar]:hidden snap-y snap-mandatory scroll-smooth">
+                    <div ref={carrosselRef} className="flex flex-row lg:flex-col gap-4 overflow-x-auto lg:overflow-y-auto w-full lg:w-auto lg:h-[400px] p-2 [&::-webkit-scrollbar]:hidden snap-x lg:snap-y snap-mandatory scroll-smooth">
                         {imagens.map((imgSrc, index) => (
                             <div 
                                 key={index}
@@ -114,7 +118,7 @@ export default function LocPageTemplate({ imovel, locador, isAdminMode = false, 
                                 }`}
                             >
                                 <Image 
-                                    className="rounded-xl object-cover w-[200px] h-[150px]" 
+                                    className="rounded-xl object-cover w-[120px] h-[90px] lg:w-[200px] lg:h-[150px]" 
                                     src={imgSrc} 
                                     unoptimized 
                                     alt="Miniatura" 
@@ -125,35 +129,42 @@ export default function LocPageTemplate({ imovel, locador, isAdminMode = false, 
                         ))}
                     </div>
 
-                    <button onClick={rolarPraBaixo} className="hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition p-2">
+                    <button onClick={rolarPraBaixo} className="hidden lg:block hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition p-2 shrink-0">
                         <FontAwesomeIcon icon={faAngleDown} className="cursor-pointer text-[#545F71] dark:text-gray-300 w-[16px] h-[16px]"/>
                     </button>
                 </div>
             </div>
 
             <Main>
-                <div className="flex flex-row justify-between gap-8 w-full max-w-[1150px]">
-                    <section className="flex flex-col w-[800px] shrink-0">
+                <div className="flex flex-col lg:flex-row justify-between w-full max-w-[1150px]">
+                    
+                    <section className="flex flex-col w-full ml-8 lg:w-[800px] shrink-0">
                         <H1>{imovel.dadosGerais.titulo}</H1>
                         <p className="text-[#545F71] dark:text-white mt-2">{imovel.dadosGerais.descricao}</p>
                     </section>
-                    <LocAndLLCard imovel={imovel} locador={locador}/>
+                    
+                    <div className="w-full flex justify-center mt-5 lg:w-auto lg:justify-end">
+                        <LocAndLLCard imovel={imovel} locador={locador}/>
+                    </div>
                 </div>    
 
-                <LocSection>
-                    <SectionH2>Endereço</SectionH2>
-                    <GridAddress imovel={imovel}></GridAddress>
-                </LocSection>
+                <section className="flex flex-col mr-30">
+                        <LocSection>
+                            <SectionH2>Endereço</SectionH2>
+                            <GridAddress imovel={imovel}></GridAddress>
+                        </LocSection>
 
-                <LocSection>
-                    <SectionH2>Capacidade do imóvel</SectionH2>
-                    <GridLocCapac imovel={imovel}/>
-                </LocSection>
+                        <LocSection>
+                            <SectionH2>Capacidade do imóvel</SectionH2>
+                            <GridLocCapac imovel={imovel}/>
+                        </LocSection>
 
-                <LocSection>
-                    <SectionH2>Especificações do imóvel</SectionH2>
-                    <GridLocSpecs imovel={imovel}/>
-                </LocSection>
+                        <LocSection>
+                            <SectionH2>Especificações do imóvel</SectionH2>
+                            <GridLocSpecs imovel={imovel}/>
+                        </LocSection>
+                </section>
+                
 
                 {children}
             </Main>

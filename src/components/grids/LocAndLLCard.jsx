@@ -11,7 +11,7 @@ export default function LocAndLLCard({ imovel, locador }) {
     const nomeLocador = locador?.nome || "Locador Indisponível";
 
     return (
-        <div className="bg-white dark:bg-[#1f1f25] p-7 rounded-3xl w-[320px] shrink-0 flex flex-col gap-5 shadow-sm border border-gray-100 dark:border-gray-800">
+        <div className="bg-white dark:bg-[#1f1f25] p-7 rounded-3xl w-[330px] lg:w-[350px] shrink-0 flex flex-col gap-5 shadow-sm border border-gray-100 dark:border-gray-800">
             <div className="flex flex-row gap-5">
                 <div>
                     <span className="text-2xl font-extrabold text-[#2A2B51] dark:text-white">{valorAluguel}</span>
@@ -23,7 +23,7 @@ export default function LocAndLLCard({ imovel, locador }) {
             </div>
             <div className="flex flex-row">
                 <span className="text-[#575881] dark:text-white">Taxa de condomínio</span>
-                <span className="text-[#2A2B51] dark:text-white ml-20 font-bold">{valorCondominio}</span>
+                <span className="text-[#2A2B51] dark:text-white ml-10 font-bold">{valorCondominio}</span>
             </div>
             <div><button className="bg-[#F8F5FF] h-[1px] w-full"></button></div>
             
