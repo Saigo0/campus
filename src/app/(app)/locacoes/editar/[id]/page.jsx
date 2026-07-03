@@ -229,7 +229,6 @@ function EditarLocacao() {
     
       await api.put(`/imoveis/${idImovel}`, formData);
       
-      alert("Imóvel atualizado com sucesso!");
       router.push("/locacoes/listar");
 
     } catch (err) {
@@ -268,11 +267,11 @@ function EditarLocacao() {
       newErrors.tipoImovel = "Selecione um tipo de imóvel.";
     }
 
-    if (!aluguel.trim()) {
+    if (!String(aluguel).trim()) {
       newErrors.aluguel = "O valor do aluguel é obrigatório.";
     }
 
-    if (!distanciaCeavi.trim()) {
+    if (!String(distanciaCeavi).trim()) {
       newErrors.distanciaCeavi = "A distância do CEAVI é obrigatória.";
     }
 

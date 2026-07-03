@@ -16,7 +16,12 @@ export default function ListarLocacoes() {
   const [carregando, setCarregando] = useState(true);
   const [isAuthorized, setIsAuthorized] = useState(false);
   const router = useRouter();
+
   const [showModal, setShowModal] = useState(false);
+
+  const [imovelParaExcluir, setImovelParaExcluir] = useState(false);
+
+
 
   useEffect(() => {
     const userStorage = localStorage.getItem("usuarioCompleto");
@@ -46,20 +51,32 @@ export default function ListarLocacoes() {
     buscarMeusImoveis();
   }, [router]);
 
-  const handleExcluir = async (idImovel) => {
-    // const confirmar = window.confirm("Tem certeza que deseja excluir esta locação? Esta ação não pode ser desfeita.");
-    // if (!confirmar) return;
+  const handleExcluir = async () => {
+    if(!imovelParaExcluir) return;
 
     try {
-      await api.delete(`/imoveis/${idImovel}`);
-      alert("Imóvel excluído com sucesso!");
-      setImoveis((prev) => prev.filter((imovel) => imovel.id !== idImovel));
+      await api.delete(`/imoveis/${imovelParaExcluir}`);
+      setImoveis((prev) => prev.filter((imovel) => imovel.id !== imovelParaExcluir));
+
+      setShowModal(false);
+      setImovelParaExcluir(null);
     } catch (error) {
       setShowModal(false);
+      setImovelParaExcluir(null);
       console.error("Erro ao excluir:", error);
       alert("Erro ao excluir o imóvel. Tente novamente.");
     }
   };
+
+  const abrirModalDeExclusao = (id) => {
+    setImovelParaExcluir(id);
+    setShowModal(true);
+  }
+
+  const cancelarExclusao = () => {
+    setImovelParaExcluir(null);
+    setShowModal(false);
+  }
 
   if (!isAuthorized)
     return (
@@ -82,7 +99,7 @@ export default function ListarLocacoes() {
       <Main>
         <DeleteModal
           isOpen={showModal}
-          onClose={() => setShowModal(false)}
+          onClose={cancelarExclusao}
           onConfirm={() => handleExcluir()}
         ></DeleteModal>
         {!carregando && imoveis.length === 0 ? (
@@ -119,7 +136,7 @@ export default function ListarLocacoes() {
                     <FontAwesomeIcon icon={faPenToSquare} /> Editar
                   </Link>
                   <button
-                    onClick={() => setShowModal(true)}
+                    onClick={() => abrirModalDeExclusao(imovel.id)}
                     className="flex-1 bg-red-50 hover:bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 py-2 rounded-xl font-semibold flex items-center justify-center gap-2 transition"
                   >
                     <FontAwesomeIcon icon={faTrash} /> Excluir
