@@ -28,7 +28,6 @@ export default function LocCard({ imovel, showAdminButtons = false }) {
     e.preventDefault(); 
     try {
       await api.put(`/imoveis/aprovar/${imovel.id}`);
-      alert("Imóvel aprovado com sucesso!");
       window.location.reload(); 
     } catch (err) {
       alert("Erro ao aprovar o imóvel.");
@@ -59,12 +58,7 @@ export default function LocCard({ imovel, showAdminButtons = false }) {
 
           {showAdminButtons && (
             <div className="absolute top-3 right-3 flex flex-row gap-2 z-10">
-              <button 
-                onClick={handleRecusar} 
-                className="bg-[#E1DFFF] text-[#004AE5] text-xs hover:scale-105 font-bold px-4 py-2 rounded-2xl shadow-md transition"
-              >
-                Recusar
-              </button>
+              
               <button 
                 onClick={handleAprovar} 
                 className="bg-gradient-to-r from-[#1B3B99] to-[#819BFF] text-white text-xs hover:scale-105 font-semibold px-5 py-2 rounded-2xl shadow-md transition"

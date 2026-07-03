@@ -57,7 +57,6 @@ export default function LocPageTemplate({ imovel, locador, isAdminMode = false, 
     const handleAprovar = async () => {
         try {
             await api.put(`/imoveis/aprovar/${imovel.id}`);
-            alert("Imóvel aprovado com sucesso!");
             router.push("/locacoes/analise");
         } catch (err) {
             alert("Erro ao aprovar o imóvel.");
@@ -77,9 +76,7 @@ export default function LocPageTemplate({ imovel, locador, isAdminMode = false, 
             {isAdminMode && (
                 <div className="flex justify-end max-w-6xl mx-auto px-4 mt-8">
                     <div className="flex gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm">
-                        <button className="bg-[#E1DFFF] text-[#004AE5] font-bold px-6 py-2 rounded-xl hover:scale-105 transition">
-                            Recusar
-                        </button>
+                        
                         <button onClick={handleAprovar} className="bg-gradient-to-r from-[#1B3B99] to-[#819BFF] text-white font-bold px-6 py-2 rounded-xl hover:scale-105 transition">
                             Aceitar
                         </button>
