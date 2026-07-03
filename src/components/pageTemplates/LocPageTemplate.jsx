@@ -137,35 +137,43 @@ export default function LocPageTemplate({ imovel, locador, isAdminMode = false, 
             </div>
 
             <Main>
-                <div className="flex flex-col lg:flex-row justify-between w-full max-w-[1150px]">
+                <div className="flex flex-col lg:flex-row justify-between w-full max-w-6xl mx-auto px-4 gap-10 mt-8">
                     
-                    <section className="flex flex-col w-full ml-8 lg:w-[800px] shrink-0">
-                        <H1>{imovel.dadosGerais.titulo}</H1>
-                        <p className="text-[#545F71] dark:text-white mt-2">{imovel.dadosGerais.descricao}</p>
-                    </section>
-                    
-                    <div className="w-full flex justify-center mt-5 lg:w-auto lg:justify-end">
-                        <LocAndLLCard imovel={imovel} locador={locador}/>
+                    <div className="flex flex-col flex-1 gap-10">
+                        
+                        <section className="flex flex-col w-full">
+                            <H1>{imovel.dadosGerais.titulo}</H1>
+                            <p className="text-[#545F71] dark:text-white mt-2 leading-relaxed">
+                                {imovel.dadosGerais.descricao}
+                            </p>
+                        </section>
+                        
+                        <section className="flex flex-col gap-8">
+                            <LocSection>
+                                <SectionH2>Endereço</SectionH2>
+                                <GridAddress imovel={imovel}></GridAddress>
+                            </LocSection>
+
+                            <LocSection>
+                                <SectionH2>Capacidade do imóvel</SectionH2>
+                                <GridLocCapac imovel={imovel}/>
+                            </LocSection>
+
+                            <LocSection>
+                                <SectionH2>Especificações do imóvel</SectionH2>
+                                <GridLocSpecs imovel={imovel}/>
+                            </LocSection>
+                        </section>
+
+                    </div> 
+
+                    <div className="w-full flex justify-center lg:w-[350px] shrink-0 relative">
+                        <div className="sticky top-28 h-fit">
+                            <LocAndLLCard imovel={imovel} locador={locador}/>
+                        </div>
                     </div>
-                </div>    
-
-                <section className="flex flex-col mr-30">
-                        <LocSection>
-                            <SectionH2>Endereço</SectionH2>
-                            <GridAddress imovel={imovel}></GridAddress>
-                        </LocSection>
-
-                        <LocSection>
-                            <SectionH2>Capacidade do imóvel</SectionH2>
-                            <GridLocCapac imovel={imovel}/>
-                        </LocSection>
-
-                        <LocSection>
-                            <SectionH2>Especificações do imóvel</SectionH2>
-                            <GridLocSpecs imovel={imovel}/>
-                        </LocSection>
-                </section>
-                
+                    
+                </div> 
 
                 {children}
             </Main>

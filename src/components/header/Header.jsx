@@ -13,7 +13,8 @@ import { useRouter } from "next/navigation";
 
 function Header({ children }) {
   const [usuario, setUsuario] = useState(null);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [fotoComErro, setFotoComErro] = useState(false); 
   
   const dropdownRef = useRef(null);
   const router = useRouter();
@@ -53,6 +54,8 @@ function Header({ children }) {
     router.push("/login");
   };
 
+  const urlFotoUsuario = usuario?.id ? `http://localhost:8080/midia/usuario/${usuario.id}/foto` : null;
+
   return (
     <header className="bg-white dark:bg-[#03132c] flex flex-wrap justify-between items-center relative z-10 py-3 px-4 md:px-10 lg:px-20 shadow-lg gap-y-4">
       <div className="order-1">
@@ -68,14 +71,15 @@ function Header({ children }) {
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               className="shrink-0 hover:scale-105 transition-transform focus:outline-none flex items-center"
             >
-              {usuario.foto ? (
+              {urlFotoUsuario && !fotoComErro ? (
                 <Image 
-                  src={usuario.foto} 
+                  src={urlFotoUsuario} 
                   alt="Foto de Perfil" 
                   width={40} 
                   height={40} 
                   className="rounded-full object-cover w-[40px] h-[40px] border-2 border-[#1B3B99] dark:border-[#819BFF]"
                   unoptimized
+                  onError={() => setFotoComErro(true)}
                 />
               ) : (
                 <FontAwesomeIcon 
