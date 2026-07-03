@@ -41,15 +41,17 @@ function CadastroLocacao() {
   const [gas, setGas] = useState(false);
 
   const [step, setStep] = useState(1);
-
   const { isAuthenticated, loading } = useAuth();
   const router = useRouter();
+  const [isAuthorized, setIsAuthorized] = useState(false);
 
   const [selectedItems, setSelectedItems] = useState([]);
 
   const [images, setImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
   const [files, setFiles] = useState([]);
+
+  
 
   function handleImage(e) {
     const selectedFiles = Array.from(e.target.files || []);
@@ -217,22 +219,42 @@ function CadastroLocacao() {
   }
 
   useEffect(() => {
-    setId(Number(localStorage.getItem("id")));
-    if (!loading && !isAuthenticated) {
+
+    if (loading) return; 
+
+    if (!isAuthenticated) {
       router.push("/login");
+      return;
     }
+
+    const userStorage = localStorage.getItem("usuarioCompleto");
+    if (userStorage) {
+      const user = JSON.parse(userStorage);
+      
+      if (!user.locador) {
+        router.push("/");
+        return;
+      }
+      
+      setIsAuthorized(true);
+      setId(user.id);
+    } else {
+      router.push("/login");
+      return;
+    }
+
     const valorAluguel = Number(aluguel) || 0;
     const valorCondominio = condominio ? Number(taxaCondominio) || 0 : 0;
-
     setTotal(valorAluguel + valorCondominio);
+
   }, [loading, isAuthenticated, router, aluguel, taxaCondominio, condominio]);
 
-  if (loading) {
-    return <div>Carregando...</div>;
-  }
-
-  if (!isAuthenticated) {
-    return null;
+  if (loading || !isAuthorized) {
+    return (
+      <div className="flex justify-center py-32 font-bold text-[#1B3B99]">
+        Verificando permissões...
+      </div>
+    );
   }
 
   return (
