@@ -15,7 +15,7 @@ function TextArea({
   return (
     <div className="flex flex-col w-full mb-3">
       <div className="flex justify-between text-sm">
-        <label htmlFor={id} className="dark:text-white text-gray-600 flex justify-center items-center gap-1">
+        <label htmlFor={id} className="dark:text-white text-black flex justify-center items-center gap-1">
           {label}
           {required && (
             <FontAwesomeIcon
@@ -34,7 +34,7 @@ function TextArea({
         min={0}
         onChange={(e) => onChange(e.target.value)}
         className={`bg-[#F2EFFF] dark:bg-[#131318] py-3 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#1B3B99]/20 ${
-          rounded ? "rounded-3xl" : "rounded-none"
+          rounded ? "rounded-2xl" : "rounded-none"
         }`}
       />
     </div>

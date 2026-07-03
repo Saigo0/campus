@@ -21,6 +21,7 @@ import {
 import Grid from "@/components/forms/Grid";
 import Utility from "@/components/forms/Utility";
 import ButtonForms from "@/components/buttons/ButtonForms";
+import ErrorMessage from "@/components/modal/ErrorMessage";
 
 export default function InformacoesAdicionais({
   selectedItems,
@@ -50,9 +51,7 @@ export default function InformacoesAdicionais({
       title={"Informações Adicionais"}
     >
       {errors.geral && (
-        <div className="mb-4 p-3 rounded-md bg-red-100 text-red-600 text-sm">
-          {errors.geral}
-        </div>
+        <ErrorMessage>{errors.geral}</ErrorMessage>
       )}
       <div className="flex flex-row gap-10 mb-10">
         <BoxInfo

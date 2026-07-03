@@ -1,7 +1,6 @@
 import { faStarOfLife } from "@fortawesome/free-solid-svg-icons";
 import {
   FontAwesomeIcon,
-  FontAwesomeIcons,
 } from "@fortawesome/react-fontawesome";
 
 function Input({
@@ -19,7 +18,7 @@ function Input({
   return (
     <div className="flex flex-col w-full mb-3">
       <div className="flex justify-between text-sm">
-        <label className="dark:text-white text-gray-600 items-center justify-center flex gap-1" htmlFor={id}>
+        <label className="dark:text-white text-black items-center justify-center flex gap-1" htmlFor={id}>
           {label}
           {required && (
             <FontAwesomeIcon
@@ -37,11 +36,11 @@ function Input({
         value={value}
         min={0}
         onChange={(e) => onChange(e.target.value)}
-        className={`py-3 px-3 text-sm focus:outline-none ${
+        className={`py-3 px-3 text-sm focus:outline-none bg-[#F2EFFF] dark:bg-[#131318] ${
           error
             ? "border border-red-500 focus:ring-red-300"
-            : "bg-[#F2EFFF] dark:bg-[#131318] focus:ring-[#1B3B99]/20"
-        } ${rounded ? "rounded-3xl" : "rounded-none"}`}
+            : "focus:ring-[#1B3B99]/20"
+        } ${rounded ? "rounded-2xl" : "rounded-none"}`}
       />
       {error && <span className="text-red-500 text-xs mt-1">{error}</span>}
     </div>

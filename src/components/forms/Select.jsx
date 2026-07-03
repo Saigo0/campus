@@ -19,7 +19,7 @@ function Select({ options, value, onChange, instanceId, inputId }) {
           ...base,
           backgroundColor: isDark ? "#131318" : "#F2EFFF",
           border: "none",
-          borderRadius: "1.5rem",
+          borderRadius: "1.2rem",
           minHeight: "48px",
           boxShadow: "none",
           paddingLeft: "4px",
@@ -38,7 +38,7 @@ function Select({ options, value, onChange, instanceId, inputId }) {
 
         placeholder: (base) => ({
           ...base,
-          color: "#6B7280",
+          color: "black",
         }),
 
         menu: (base) => ({

@@ -19,6 +19,7 @@ import Input from "@/components/inputs/Input";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { FaRightLong } from "react-icons/fa6";
+import ErrorMessage from "@/components/modal/ErrorMessage";
 
 export default function InformacoesGerais({
   titulo,
@@ -71,11 +72,7 @@ export default function InformacoesGerais({
       icon={faHouse}
       className="flex flex-col gap-10"
     >
-      {errors.geral && (
-        <div className="mb-4 p-3 rounded-md bg-red-100 text-red-600 text-sm">
-          {errors.geral}
-        </div>
-      )}
+      {errors.geral && <ErrorMessage>{errors.geral}</ErrorMessage>}
       <BoxInfo
         title={"Galeria Visual"}
         icon={faPhotoFilm}
@@ -158,7 +155,10 @@ export default function InformacoesGerais({
               id={"aluguel"}
               error={errors.aluguel}
             ></Input>
-            <label htmlFor="tempoContrato" className="text-sm text-gray-600">
+            <label
+              htmlFor="tempoContrato"
+              className="text-sm dark:text-white text-gray-600"
+            >
               TEMPO MÍNIMO DE CONTRATO
             </label>
             <Select
@@ -193,7 +193,7 @@ export default function InformacoesGerais({
                 id={"taxaCondominio"}
               ></Input>
             )}
-            <div className="flex justify-between p-3 rounded-3xl dark:bg-[#03132c] bg-[#F2EFFF]">
+            <div className="flex justify-between p-3 rounded-2xl dark:bg-[#03132c] bg-[#F2EFFF]">
               <p className="text-sm">Total estimado</p>
               <p>R$ {total}</p>
             </div>

@@ -17,6 +17,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons/faInfoCircle";
+import ErrorMessage from "@/components/modal/ErrorMessage";
 
 export default function EspecificacoesCapacidade({
   cidade,
@@ -58,11 +59,7 @@ export default function EspecificacoesCapacidade({
       title={"Especificações de capacidade"}
       className="flex flex-col gap-10"
     >
-      {errors.geral && (
-        <div className="mb-4 p-3 rounded-md bg-red-100 text-red-600 text-sm">
-          {errors.geral}
-        </div>
-      )}
+      {errors.geral && <ErrorMessage>{errors.geral}</ErrorMessage>}
       <BoxInfo title={"Endereço"} icon={faInfoCircle}>
         <DividedInput>
           <Input
