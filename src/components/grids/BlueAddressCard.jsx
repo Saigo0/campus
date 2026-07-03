@@ -24,7 +24,7 @@ export default function BlueAddressCard({ imovel }) {
                 <div className="text-[#004AE5] dark:text-[#819BFF] font-bold text-md mt-3">
                     <span> 
                         <FontAwesomeIcon icon={faLocationDot} className="mr-2 w-[16px] h-[16px]"/>
-                        A {end.distanciaCeavi} km do portão do campus.
+                        A {end.distanciaCeavi} metros do portão do campus.
                     </span>
                 </div>
             )}
