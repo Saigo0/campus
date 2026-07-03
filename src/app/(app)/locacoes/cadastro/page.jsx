@@ -339,7 +339,7 @@ function CadastroLocacao() {
               setInternet={setInternet}
               setSelectedItems={setSelectedItems}
               errors={erro}
-            ></InformacoesAdicionais>
+            >Cadastrar</InformacoesAdicionais>
           )}
         </form>
       </Container>

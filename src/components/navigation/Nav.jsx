@@ -26,7 +26,7 @@ export default function Nav() {
                 )}
 
                 {isLocador && (
-                    <NavLi href="/locacoes/suas-locacoes">Suas locações</NavLi>
+                    <NavLi href="/locacoes/listar">Suas locações</NavLi>
                 )}
             </ul>
         </nav>

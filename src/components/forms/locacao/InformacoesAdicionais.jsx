@@ -33,7 +33,8 @@ export default function InformacoesAdicionais({
   setInternet,
   gas,
   setGas,
-  errors
+  errors,
+  children,
 }) {
   function selectItem(description) {
     setSelectedItems((prev) => {
@@ -159,7 +160,7 @@ export default function InformacoesAdicionais({
           </div>
         </BoxInfo>
       </div>
-      <ButtonForms>Cadastrar</ButtonForms>
+      <ButtonForms>{children}</ButtonForms>
     </SectionInfo>
   );
 }

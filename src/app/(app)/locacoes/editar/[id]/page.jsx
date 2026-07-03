@@ -8,11 +8,15 @@ import EspecificacoesCapacidade from "@/components/forms/locacao/EspecificacoesC
 import InformacoesAdicionais from "@/components/forms/locacao/InformacoesAdicionais";
 import Navigation from "@/components/forms/navegacao/Navigation";
 import api from "@/app/utils/api";
+import { useAuth } from "@/app/context/AuthContext";
 
 function EditarLocacao() {
   const { id: idImovel } = useParams();
   const router = useRouter();
   
+  const { isAuthenticated, loading } = useAuth();
+  const [id, setId] = useState();
+
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [carregandoDados, setCarregandoDados] = useState(true);
 
@@ -395,7 +399,7 @@ function EditarLocacao() {
                       setInternet={setInternet}
                       setSelectedItems={setSelectedItems}
                       errors={erro}
-                    ></InformacoesAdicionais>
+                    >Editar</InformacoesAdicionais>
                   )}
       </form>
     </Container>
