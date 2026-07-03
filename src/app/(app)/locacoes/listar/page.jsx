@@ -8,7 +8,7 @@ import Main from "@/components/home/Main";
 import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPenToSquare, faPlus } from "@fortawesome/free-solid-svg-icons";
 import DeleteModal from "@/components/modal/DeleteModal";
 
 export default function ListarLocacoes() {
@@ -95,7 +95,15 @@ export default function ListarLocacoes() {
             : `Você possui ${imoveis.length} imóvel(is) cadastrado(s).`}
         </p>
       </div>
-
+      <div className="mb-5 ml-4">
+            <button 
+                onClick={() => router.push("/locacoes/cadastro")} 
+                className="py-3 px-8 flex flex-row items-center justify-center bg-gradient-to-r from-[#1B3B99] dark:from-[#b6c4ff] to-[#819BFF] rounded-3xl gap-4 hover:scale-105 transition shrink-0 w-full md:w-auto"
+            >
+                <FontAwesomeIcon icon={faPlus} className="text-white text-xl dark:text-black"></FontAwesomeIcon>
+                <span className="font-bold text-white dark:text-black">Cadastrar</span>
+            </button>
+      </div>
       <Main>
         <DeleteModal
           isOpen={showModal}

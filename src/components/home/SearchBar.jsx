@@ -20,7 +20,7 @@ export default function SearchBar({ termoPesquisa, setTermoPesquisa }) {
     <div className="bg-white dark:bg-[#1f1f25] mx-4 md:mx-10 rounded-4xl py-4 px-6 flex flex-col md:flex-row items-center justify-between shadow-lg gap-4 md:gap-10 relative z-20">
       
       <div className="flex flex-col flex-1 w-full lg:w-[410px]">
-        <label htmlFor="busca" className="text-[#A29F9F] dark:text-gray-400 text-xs font-bold tracking-wider mb-1">
+        <label htmlFor="busca" className="text-[#A29F9F] dark:text-gray-200 text-xs font-bold tracking-wider mb-1">
           BUSCAR IMÓVEIS
         </label>
         
@@ -31,7 +31,7 @@ export default function SearchBar({ termoPesquisa, setTermoPesquisa }) {
           onChange={(e) => setValorDigitado(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Pesquise por cidade, bairro ou título do imóvel..."
-          className="text-[#545F71] dark:text-white bg-transparent outline-none w-full text-lg placeholder-gray-300 dark:placeholder-gray-600 focus:ring-0"
+          className="text-[#545F71] dark:text-white bg-transparent outline-none w-full text-lg placeholder-gray-500 dark:placeholder-gray-400 focus:ring-0"
           autoComplete="off"
         />
       </div>
