@@ -80,7 +80,7 @@ export default function InformacoesGerais({
         onChange={handleImage}
       >
         {selectedImage && (
-          <div className="relative w-full h-140 mb-5">
+          <div className="relative w-full h-50 md:h-100 xl:h-140 mb-5">
             <img
               src={selectedImage.url}
               alt=""

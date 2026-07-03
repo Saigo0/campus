@@ -53,11 +53,11 @@ export default function InformacoesAdicionais({
       {errors.geral && (
         <ErrorMessage>{errors.geral}</ErrorMessage>
       )}
-      <div className="flex flex-row gap-10 mb-10">
+      <div className="flex flex-col md:flex-row gap-10 mb-10">
         <BoxInfo
           title={"Comodidades e Instalações"}
           icon={faBuilding}
-          className="w-2/3"
+          className="w-full md:w-2/3"
         >
           <Grid
             elementsList={[
@@ -130,8 +130,8 @@ export default function InformacoesAdicionais({
             ]}
           />
         </BoxInfo>
-        <BoxInfo title={"Incluídos"} icon={faHouse} className="w-1/3">
-          <div className="flex flex-col gap-5">
+        <BoxInfo title={"Incluídos"} icon={faHouse} className="w-full md:w-1/3">
+          <div className="flex sm:grid sm:grid-cols-2 md:grid-cols-1 flex-col md:flex-col gap-5">
             <Utility
               icon={faBolt}
               title={"Eletricidade"}

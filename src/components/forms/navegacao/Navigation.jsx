@@ -3,7 +3,7 @@ import NavigationOption from "./NavigationOption";
 export default function Navigation({ step, setStep }) {
   return (
     <nav className=" dark:text-white w-3/4 mx-auto">
-      <ol className="flex flex-row justify-between">
+      <ol className="flex flex-col md:flex-row justify-between">
         <NavigationOption
           setStep={setStep}
           step={step}
