@@ -51,11 +51,9 @@ function CadastroLocacao() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [files, setFiles] = useState([]);
 
-  
-
   function handleImage(e) {
     const selectedFiles = Array.from(e.target.files || []);
-
+    
     setFiles((prev) => [...prev, ...selectedFiles]);
 
     const newImages = selectedFiles.map((file) => ({

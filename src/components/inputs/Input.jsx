@@ -27,7 +27,7 @@ function Input({
             />
           )}
         </label>
-        {forgot && <span className="text-[#1B3B99]">Esqueceu a senha?</span>}
+        {forgot && <span className="text-[#1B3B99] dark:text-[#819BFF]">Esqueceu a senha?</span>}
       </div>
       <input
         id={id}
