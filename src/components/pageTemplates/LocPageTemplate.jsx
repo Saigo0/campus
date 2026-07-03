@@ -18,7 +18,7 @@ import { useRouter } from "next/navigation";
 export default function LocPageTemplate({ imovel, locador, isAdminMode = false, children }) {
     const router = useRouter();
     
-    const [imagens, setImagens] = useState(["https://placehold.co/800x500/e2e8f0/475569?text=Carregando..."]);
+    const [imagens, setImagens] = useState(["https://dummyimage.com/800x500/e2e8f0/475569.png&text=Carregando..."]);
     const [imagemPrincipal, setImagemPrincipal] = useState(imagens[0]);
     const carrosselRef = useRef(null);
 
@@ -34,13 +34,13 @@ export default function LocPageTemplate({ imovel, locador, isAdminMode = false, 
                     setImagens(urlsCompletas);
                     setImagemPrincipal(urlsCompletas[0]); 
                 } else {
-                    setImagens(["https://placehold.co/800x500/e2e8f0/475569?text=Sem+Foto"]);
-                    setImagemPrincipal("https://placehold.co/800x500/e2e8f0/475569?text=Sem+Foto");
+                    setImagens(["https://dummyimage.com/800x500/e2e8f0/475569.png&text=Sem+Foto"]);
+                    setImagemPrincipal("https://dummyimage.com/800x500/e2e8f0/475569.png&text=Sem+Foto");
                 }
             } catch (error) {
                 console.error("Erro ao buscar fotos:", error);
-                setImagens(["https://placehold.co/800x500/e2e8f0/475569?text=Sem+Foto"]);
-                setImagemPrincipal("https://placehold.co/800x500/e2e8f0/475569?text=Sem+Foto");
+                setImagens(["https://dummyimage.com/800x500/e2e8f0/475569.png&text=Sem+Foto"]);
+                setImagemPrincipal("https://dummyimage.com/800x500/e2e8f0/475569.png&text=Sem+Foto");
             }
         }
         buscarFotos();
@@ -93,6 +93,7 @@ export default function LocPageTemplate({ imovel, locador, isAdminMode = false, 
                     <Image 
                         className="rounded-xl object-cover w-full h-[250px] md:h-[400px] lg:h-[500px] mt-0 lg:mt-9 shadow-lg transition-all duration-300" 
                         unoptimized 
+                        priority
                         src={imagemPrincipal} 
                         alt="Imagem do Imóvel" 
                         width={800} 

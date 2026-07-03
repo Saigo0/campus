@@ -13,8 +13,9 @@ export function setTokenGetter(fn) {
 api.interceptors.request.use((config) => {
   const token = getTokenFn ? getTokenFn() : null;
 
+  const isBuscaHome = config.url === "/imoveis" && config.method === "get";
+
   const publicRoutes = [
-    "/imoveis",
     "/login",
     "/locador/cadastro",
   ];
@@ -23,7 +24,7 @@ api.interceptors.request.use((config) => {
     config.url?.startsWith(route)
   );
 
-  if (token && !isPublicRoute) {
+  if (token && !isPublicRoute && !isBuscaHome) {
     config.headers.Authorization = `Bearer ${token}`;
   }
 
