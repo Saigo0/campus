@@ -20,7 +20,7 @@ export default function Nav() {
         <nav className="w-full">
             <ul className="flex flex-wrap justify-center gap-2 md:gap-8">
                 <NavLi href="/">Home</NavLi>
-            
+            {/*
                 {isAdmin && (
                     <NavLi href="/locacoes/analise">Análise</NavLi>
                 )}
@@ -28,6 +28,7 @@ export default function Nav() {
                 {isLocador && (
                     <NavLi href="/locacoes/listar">Suas locações</NavLi>
                 )}
+            */}
             </ul>
         </nav>
     );

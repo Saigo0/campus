@@ -157,6 +157,8 @@ function CadastroLocacao() {
       });
 
       const res = await api.post("/imoveis", formData);
+
+      router.push("/locacoes/listar");
     } catch (err) {
       const newErrors = {};
       newErrors.geral =
